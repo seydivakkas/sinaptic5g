@@ -1,0 +1,65 @@
+{
+  "telefonla_konusma": {
+    "instances": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "ap50": 0.0,
+    "ap50_95": 0.0
+  },
+  "su_icme": {
+    "instances": 4,
+    "precision": 1.0,
+    "recall": 0.0,
+    "ap50": 0.0,
+    "ap50_95": 0.0
+  },
+  "arkaya_bakma": {
+    "instances": 1,
+    "precision": 0.7232,
+    "recall": 1.0,
+    "ap50": 0.995,
+    "ap50_95": 0.4975
+  },
+  "esneme": {
+    "instances": 198,
+    "precision": 0.948,
+    "recall": 0.7366,
+    "ap50": 0.8027,
+    "ap50_95": 0.4743
+  },
+  "sigara_icme": {
+    "instances": 1403,
+    "precision": 0.829,
+    "recall": 0.8867,
+    "ap50": 0.8811,
+    "ap50_95": 0.5445
+  },
+  "emniyet_kemeri_ihlali": {
+    "instances": 10,
+    "precision": 0.2956,
+    "recall": 0.9,
+    "ap50": 0.8013,
+    "ap50_95": 0.4433
+  },
+  "teknocan": {
+    "instances": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "ap50": 0.0,
+    "ap50_95": 0.0
+  },
+  "bilgisayar": {
+    "instances": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "ap50": 0.0,
+    "ap50_95": 0.0
+  },
+  "license_plate": {
+    "instances": 128,
+    "precision": 0.9601,
+    "recall": 0.9844,
+    "ap50": 0.994,
+    "ap50_95": 0.8671
+  }
+}

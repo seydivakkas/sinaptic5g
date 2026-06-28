@@ -1,0 +1,26 @@
+# Canlı çıkarım çalışma konfigürasyonu
+frame:
+  input_size: [640, 640]
+  temporal_buffer_size: 32
+
+qod:
+  hard_gate:
+    target_present: true
+    vehicle_is_approaching: true
+    no_active_equivalent_session: true
+  benefit_model_path: "configs/qod_benefit_model.json"
+  session_duration_seconds: 300
+  fallback: "best_effort"
+
+speed:
+  calibration_path: null
+  absolute_speed_without_measured_homography: false
+
+telemetry:
+  websocket_path: "/ws/telemetry"
+  raw_frames_allowed: false
+
+media:
+  protocol: "webrtc"
+  legacy_jpeg_websocket_enabled: false
+

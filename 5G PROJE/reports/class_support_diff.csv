@@ -1,0 +1,10 @@
+sinif_id,sinif_adi,train_before,train_after,train_delta,val_before,val_after,val_delta,test_before,test_after,test_delta
+0,telefonla_konusma,1750,1750,0,500,500,0,250,250,0
+1,su_icme,702,702,0,201,201,0,100,100,0
+2,arkaya_bakma,709,709,0,202,202,0,101,101,0
+3,esneme,705,705,0,197,197,0,102,102,0
+4,sigara_icme,3757,5446,+1689,1091,1536,+445,547,758,+211
+5,emniyet_kemeri_ihlali,267,304,+37,81,86,+5,36,43,+7
+6,teknocan,0,84,+84,0,28,+28,0,8,+8
+7,bilgisayar,32,335,+303,9,10,+1,5,6,+1
+8,license_plate,1363,1440,+77,389,402,+13,195,219,+24

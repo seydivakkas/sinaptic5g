@@ -1,0 +1,68 @@
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Ortam ─────────────────────────────────────────────────────
+.env
+venv/
+.venv/
+env/
+ENV/
+
+# ── Model Ağırlıkları (büyük dosyalar) ────────────────────────
+!models/*.pt
+!models/*.pth
+!models/*.tflite
+!models/*.onnx
+!models/*.engine
+# Küçük yapılandırma dosyalarını izle:
+!models/.gitkeep
+
+# ── Eğitim Çalıştırmaları ─────────────────────────────────────
+runs/
+wandb/
+
+# ── Dataset ───────────────────────────────────────────────────
+dataset/images/
+dataset/labels/
+dataset/masks/
+# data.yaml dosyasını izle:
+!dataset/data.yaml
+
+# ── Videolar ─────────────────────────────────────────────────
+veriseti/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# ── IDE & OS ─────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Loglar ───────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Docker ───────────────────────────────────────────────────
+.dockerignore
+
+# ── Test ─────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/

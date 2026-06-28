@@ -1,0 +1,105 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+#
+# Faz 3 — DENEYSEL: Class-Balanced Loss Deneyi
+# UYARI: Bu config DENEYSEL. Üretim modeli detector_v3 / models/detector.onnx
+# KESİNLİKLE KILITLIDIR.
+#
+# Strateji:
+#   1. cls_pw: Sınıf ağırlığı üssü artırılmış (düşük destekli sınıflara önem)
+#   2. Weighted sampling: class-balanced sampler (YOLO arg: val.rect=False + custom sampler)
+#   3. Focal loss benzeri davranış: cls_pw > 0.5 → hard negative'lere ağırlık
+#
+# NOT: Gerçek weighted loss için Ultralytics kaynak kodu modifikasyonu gerekir.
+# Bu config argümanlarla elde edilebilecek en yakın approximation'ı kullanır.
+
+# ─── Model ───────────────────────────────────────────────────────────────────
+model: yolov8m.pt
+
+# ─── Veri Seti ───────────────────────────────────────────────────────────────
+data: configs/data_v4_balanced.yaml  # Dengeli örnekleme ile veri seti
+# data_v4_balanced.yaml: Düşük destekli sınıf ağırlıklı veri seti yolları içerir
+
+# Split: train=0.70, val=0.15, test=0.15, seed=42
+
+# ─── Eğitim Parametreleri ────────────────────────────────────────────────────
+epochs: 50
+batch: 16
+imgsz: 640
+device: 0
+workers: 4
+seed: 42
+deterministic: true
+patience: 15
+rect: false                # Dengeli sampling için kapalı (no-rect mode)
+
+# ─── Optimizer ───────────────────────────────────────────────────────────────
+optimizer: AdamW
+lr0: 0.001
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+amp: true
+
+# ─── Çıktı ───────────────────────────────────────────────────────────────────
+project: models/runs/experiments
+name: balanced_loss_experiment
+save: true
+save_period: 10
+
+# ─── Freeze ──────────────────────────────────────────────────────────────────
+freeze: 10
+
+# ─── Augmentasyon ────────────────────────────────────────────────────────────
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 10.0
+translate: 0.1
+scale: 0.5
+shear: 2.0
+perspective: 0.0005
+flipud: 0.0
+fliplr: 0.5
+mosaic: 1.0
+mixup: 0.15
+copy_paste: 0.20           # Daha yüksek copy-paste → düşük destekli sınıflar için
+close_mosaic: 10
+
+# ─── Kayıp Fonksiyonu — CLASS BALANCED ───────────────────────────────────────
+box: 7.5
+cls: 0.8                   # Sınıf kaybı ağırlığı artırıldı (balanced için)
+dfl: 1.5
+cls_pw: 1.0                # cls_pw=1.0 → Focal loss benzeri ağırlıklandırma
+                            # cls_pw < 1.0 → yaygın sınıflara daha az ceza
+                            # cls_pw > 0.5 → seyrek sınıflara daha fazla odak
+
+# ─── Sınıf Ağırlıkları (Manuel) ──────────────────────────────────────────────
+# FTR 9 sınıf için tahmini ağırlıklar (class support'a göre ters orantılı):
+# Düşük destek: teknocan(6), bilgisayar(7), emniyet_kemeri_ihlali(5) → yüksek ağırlık
+# Not: Ultralytics'te manuel class weight desteği sınırlıdır.
+# Gerçek weighted loss için: scripts/train_detector_v4_full.py custom trainer kullanır.
+#
+# Sınıf destek tablosu (reports/class_support_after.csv):
+#   telefonla_konusma:     yüksek destek
+#   su_icme:               orta destek
+#   arkaya_bakma:          orta destek
+#   esneme:                orta destek
+#   sigara_icme:           orta destek
+#   emniyet_kemeri_ihlali: DÜŞÜK destek → 3x ağırlık
+#   teknocan:              DÜŞÜK destek → 3x ağırlık
+#   bilgisayar:            DÜŞÜK destek → 3x ağırlık
+#   license_plate:         yüksek destek
+
+# ─── Metrik Çıktıları ────────────────────────────────────────────────────────
+# Metrikler: models/runs/experiments/balanced_loss_experiment/results.csv
+# Model: models/runs/experiments/balanced_loss_experiment/weights/best.pt
+# Rapor: reports/model_training_plan.md
+
+# ─── Üretim Güvenlik Notu ────────────────────────────────────────────────────
+# ASLA otomatik production'a alınmaz.
+# Değerlendirme: scripts/evaluate_detector_v4_full.py ile detector_v3 karşılaştırması.

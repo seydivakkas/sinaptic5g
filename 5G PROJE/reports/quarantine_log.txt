@@ -1,0 +1,3 @@
+Karantinaya alinan dosya sayisi:
+Images: 110
+Labels: 110

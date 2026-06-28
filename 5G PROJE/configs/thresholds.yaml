@@ -1,0 +1,17 @@
+# SİNAPTİC5G Class Detection Thresholds Configuration
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+thresholds:
+  telefonla_konusma: 0.30
+  su_icme: 0.40
+  arkaya_bakma: 0.25
+  esneme: 0.25
+  sigara_icme: 0.45
+  emniyet_kemeri_ihlali: 0.30
+  teknocan: 0.35
+  bilgisayar: 0.30
+  license_plate: 0.40
+
+default_threshold: 0.35
+zero_dce_brightness_threshold: 80

@@ -1,0 +1,1658 @@
+{
+  "telefonla_konusma": {
+    "class_id": 0,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 15,
+    "sample_fp": 214,
+    "best_threshold": 0.3,
+    "best_f1": 0.28,
+    "best_precision": 0.2,
+    "best_recall": 0.467,
+    "recommended_threshold": 0.3,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.105,
+        "recall": 0.933,
+        "f1": 0.189,
+        "tp": 14,
+        "fp": 119,
+        "fn": 1
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.117,
+        "recall": 0.733,
+        "f1": 0.202,
+        "tp": 11,
+        "fp": 83,
+        "fn": 4
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.164,
+        "recall": 0.733,
+        "f1": 0.268,
+        "tp": 11,
+        "fp": 56,
+        "fn": 4
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.148,
+        "recall": 0.533,
+        "f1": 0.232,
+        "tp": 8,
+        "fp": 46,
+        "fn": 7
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.186,
+        "recall": 0.533,
+        "f1": 0.276,
+        "tp": 8,
+        "fp": 35,
+        "fn": 7
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.2,
+        "recall": 0.467,
+        "f1": 0.28,
+        "tp": 7,
+        "fp": 28,
+        "fn": 8
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.167,
+        "recall": 0.333,
+        "f1": 0.222,
+        "tp": 5,
+        "fp": 25,
+        "fn": 10
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.138,
+        "recall": 0.267,
+        "f1": 0.182,
+        "tp": 4,
+        "fp": 25,
+        "fn": 11
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.107,
+        "recall": 0.2,
+        "f1": 0.14,
+        "tp": 3,
+        "fp": 25,
+        "fn": 12
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.107,
+        "recall": 0.2,
+        "f1": 0.14,
+        "tp": 3,
+        "fp": 25,
+        "fn": 12
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.107,
+        "recall": 0.2,
+        "f1": 0.14,
+        "tp": 3,
+        "fp": 25,
+        "fn": 12
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.111,
+        "recall": 0.2,
+        "f1": 0.143,
+        "tp": 3,
+        "fp": 24,
+        "fn": 12
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.12,
+        "recall": 0.2,
+        "f1": 0.15,
+        "tp": 3,
+        "fp": 22,
+        "fn": 12
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.136,
+        "recall": 0.2,
+        "f1": 0.162,
+        "tp": 3,
+        "fp": 19,
+        "fn": 12
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.176,
+        "recall": 0.2,
+        "f1": 0.188,
+        "tp": 3,
+        "fp": 14,
+        "fn": 12
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.4,
+        "recall": 0.133,
+        "f1": 0.2,
+        "tp": 2,
+        "fp": 3,
+        "fn": 13
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 15
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 15
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 15
+      }
+    ]
+  },
+  "su_icme": {
+    "class_id": 1,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 7,
+    "sample_fp": 115,
+    "best_threshold": 0.85,
+    "best_f1": 0.462,
+    "best_precision": 0.5,
+    "best_recall": 0.429,
+    "recommended_threshold": 0.85,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.069,
+        "recall": 1.0,
+        "f1": 0.128,
+        "tp": 7,
+        "fp": 95,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.078,
+        "recall": 1.0,
+        "f1": 0.144,
+        "tp": 7,
+        "fp": 83,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.087,
+        "recall": 1.0,
+        "f1": 0.161,
+        "tp": 7,
+        "fp": 73,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.09,
+        "recall": 1.0,
+        "f1": 0.165,
+        "tp": 7,
+        "fp": 71,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.095,
+        "recall": 1.0,
+        "f1": 0.173,
+        "tp": 7,
+        "fp": 67,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.101,
+        "recall": 1.0,
+        "f1": 0.184,
+        "tp": 7,
+        "fp": 62,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.101,
+        "recall": 1.0,
+        "f1": 0.184,
+        "tp": 7,
+        "fp": 62,
+        "fn": 0
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.111,
+        "recall": 1.0,
+        "f1": 0.2,
+        "tp": 7,
+        "fp": 56,
+        "fn": 0
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.111,
+        "recall": 1.0,
+        "f1": 0.2,
+        "tp": 7,
+        "fp": 56,
+        "fn": 0
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.125,
+        "recall": 1.0,
+        "f1": 0.222,
+        "tp": 7,
+        "fp": 49,
+        "fn": 0
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.13,
+        "recall": 1.0,
+        "f1": 0.23,
+        "tp": 7,
+        "fp": 47,
+        "fn": 0
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.132,
+        "recall": 1.0,
+        "f1": 0.233,
+        "tp": 7,
+        "fp": 46,
+        "fn": 0
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.143,
+        "recall": 1.0,
+        "f1": 0.25,
+        "tp": 7,
+        "fp": 42,
+        "fn": 0
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.154,
+        "recall": 0.857,
+        "f1": 0.261,
+        "tp": 6,
+        "fp": 33,
+        "fn": 1
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.194,
+        "recall": 0.857,
+        "f1": 0.316,
+        "tp": 6,
+        "fp": 25,
+        "fn": 1
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.278,
+        "recall": 0.714,
+        "f1": 0.4,
+        "tp": 5,
+        "fp": 13,
+        "fn": 2
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.5,
+        "recall": 0.429,
+        "f1": 0.462,
+        "tp": 3,
+        "fp": 3,
+        "fn": 4
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 7
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 7
+      }
+    ]
+  },
+  "arkaya_bakma": {
+    "class_id": 2,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 8,
+    "sample_fp": 142,
+    "best_threshold": 0.8,
+    "best_f1": 0.467,
+    "best_precision": 0.318,
+    "best_recall": 0.875,
+    "recommended_threshold": 0.8,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.075,
+        "recall": 1.0,
+        "f1": 0.139,
+        "tp": 8,
+        "fp": 99,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.086,
+        "recall": 1.0,
+        "f1": 0.158,
+        "tp": 8,
+        "fp": 85,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.094,
+        "recall": 1.0,
+        "f1": 0.172,
+        "tp": 8,
+        "fp": 77,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.098,
+        "recall": 1.0,
+        "f1": 0.178,
+        "tp": 8,
+        "fp": 74,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.104,
+        "recall": 1.0,
+        "f1": 0.188,
+        "tp": 8,
+        "fp": 69,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.107,
+        "recall": 1.0,
+        "f1": 0.193,
+        "tp": 8,
+        "fp": 67,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.11,
+        "recall": 1.0,
+        "f1": 0.198,
+        "tp": 8,
+        "fp": 65,
+        "fn": 0
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.116,
+        "recall": 1.0,
+        "f1": 0.208,
+        "tp": 8,
+        "fp": 61,
+        "fn": 0
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.118,
+        "recall": 1.0,
+        "f1": 0.211,
+        "tp": 8,
+        "fp": 60,
+        "fn": 0
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.123,
+        "recall": 1.0,
+        "f1": 0.219,
+        "tp": 8,
+        "fp": 57,
+        "fn": 0
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.131,
+        "recall": 1.0,
+        "f1": 0.232,
+        "tp": 8,
+        "fp": 53,
+        "fn": 0
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.14,
+        "recall": 1.0,
+        "f1": 0.246,
+        "tp": 8,
+        "fp": 49,
+        "fn": 0
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.167,
+        "recall": 1.0,
+        "f1": 0.286,
+        "tp": 8,
+        "fp": 40,
+        "fn": 0
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.178,
+        "recall": 1.0,
+        "f1": 0.302,
+        "tp": 8,
+        "fp": 37,
+        "fn": 0
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.194,
+        "recall": 0.875,
+        "f1": 0.318,
+        "tp": 7,
+        "fp": 29,
+        "fn": 1
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.318,
+        "recall": 0.875,
+        "f1": 0.467,
+        "tp": 7,
+        "fp": 15,
+        "fn": 1
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.4,
+        "recall": 0.5,
+        "f1": 0.444,
+        "tp": 4,
+        "fp": 6,
+        "fn": 4
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      }
+    ]
+  },
+  "esneme": {
+    "class_id": 3,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 8,
+    "sample_fp": 465,
+    "best_threshold": 0.55,
+    "best_f1": 0.444,
+    "best_precision": 0.4,
+    "best_recall": 0.5,
+    "recommended_threshold": 0.55,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.031,
+        "recall": 1.0,
+        "f1": 0.059,
+        "tp": 8,
+        "fp": 254,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.039,
+        "recall": 1.0,
+        "f1": 0.075,
+        "tp": 8,
+        "fp": 198,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.047,
+        "recall": 1.0,
+        "f1": 0.09,
+        "tp": 8,
+        "fp": 161,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.061,
+        "recall": 1.0,
+        "f1": 0.114,
+        "tp": 8,
+        "fp": 124,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.072,
+        "recall": 1.0,
+        "f1": 0.134,
+        "tp": 8,
+        "fp": 103,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.073,
+        "recall": 0.875,
+        "f1": 0.135,
+        "tp": 7,
+        "fp": 89,
+        "fn": 1
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.087,
+        "recall": 0.875,
+        "f1": 0.159,
+        "tp": 7,
+        "fp": 73,
+        "fn": 1
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.101,
+        "recall": 0.875,
+        "f1": 0.182,
+        "tp": 7,
+        "fp": 62,
+        "fn": 1
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.13,
+        "recall": 0.75,
+        "f1": 0.222,
+        "tp": 6,
+        "fp": 40,
+        "fn": 2
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.222,
+        "recall": 0.75,
+        "f1": 0.343,
+        "tp": 6,
+        "fp": 21,
+        "fn": 2
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.4,
+        "recall": 0.5,
+        "f1": 0.444,
+        "tp": 4,
+        "fp": 6,
+        "fn": 4
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.5,
+        "recall": 0.125,
+        "f1": 0.2,
+        "tp": 1,
+        "fp": 1,
+        "fn": 7
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 8
+      }
+    ]
+  },
+  "sigara_icme": {
+    "class_id": 4,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 86,
+    "sample_fp": 2961,
+    "best_threshold": 0.75,
+    "best_f1": 0.256,
+    "best_precision": 0.195,
+    "best_recall": 0.372,
+    "recommended_threshold": 0.75,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.055,
+        "recall": 0.965,
+        "f1": 0.103,
+        "tp": 83,
+        "fp": 1436,
+        "fn": 3
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.066,
+        "recall": 0.895,
+        "f1": 0.124,
+        "tp": 77,
+        "fp": 1082,
+        "fn": 9
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.074,
+        "recall": 0.86,
+        "f1": 0.137,
+        "tp": 74,
+        "fp": 920,
+        "fn": 12
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.084,
+        "recall": 0.849,
+        "f1": 0.153,
+        "tp": 73,
+        "fp": 794,
+        "fn": 13
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.093,
+        "recall": 0.826,
+        "f1": 0.167,
+        "tp": 71,
+        "fp": 695,
+        "fn": 15
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.096,
+        "recall": 0.767,
+        "f1": 0.171,
+        "tp": 66,
+        "fp": 622,
+        "fn": 20
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.105,
+        "recall": 0.756,
+        "f1": 0.185,
+        "tp": 65,
+        "fp": 552,
+        "fn": 21
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.118,
+        "recall": 0.744,
+        "f1": 0.203,
+        "tp": 64,
+        "fp": 480,
+        "fn": 22
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.128,
+        "recall": 0.733,
+        "f1": 0.218,
+        "tp": 63,
+        "fp": 429,
+        "fn": 23
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.143,
+        "recall": 0.686,
+        "f1": 0.236,
+        "tp": 59,
+        "fp": 355,
+        "fn": 27
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.149,
+        "recall": 0.616,
+        "f1": 0.24,
+        "tp": 53,
+        "fp": 302,
+        "fn": 33
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.162,
+        "recall": 0.581,
+        "f1": 0.253,
+        "tp": 50,
+        "fp": 259,
+        "fn": 36
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.17,
+        "recall": 0.5,
+        "f1": 0.254,
+        "tp": 43,
+        "fp": 210,
+        "fn": 43
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.168,
+        "recall": 0.419,
+        "f1": 0.24,
+        "tp": 36,
+        "fp": 178,
+        "fn": 50
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.195,
+        "recall": 0.372,
+        "f1": 0.256,
+        "tp": 32,
+        "fp": 132,
+        "fn": 54
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.197,
+        "recall": 0.279,
+        "f1": 0.231,
+        "tp": 24,
+        "fp": 98,
+        "fn": 62
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.232,
+        "recall": 0.186,
+        "f1": 0.206,
+        "tp": 16,
+        "fp": 53,
+        "fn": 70
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.333,
+        "recall": 0.116,
+        "f1": 0.172,
+        "tp": 10,
+        "fp": 20,
+        "fn": 76
+      },
+      {
+        "threshold": 0.95,
+        "precision": 1.0,
+        "recall": 0.023,
+        "f1": 0.045,
+        "tp": 2,
+        "fp": 0,
+        "fn": 84
+      }
+    ]
+  },
+  "emniyet_kemeri_ihlali": {
+    "class_id": 5,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 2,
+    "sample_fp": 327,
+    "best_threshold": 0.9,
+    "best_f1": 0.5,
+    "best_precision": 0.5,
+    "best_recall": 0.5,
+    "recommended_threshold": 0.9,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.021,
+        "recall": 1.0,
+        "f1": 0.042,
+        "tp": 2,
+        "fp": 92,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.034,
+        "recall": 1.0,
+        "f1": 0.067,
+        "tp": 2,
+        "fp": 56,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.045,
+        "recall": 1.0,
+        "f1": 0.087,
+        "tp": 2,
+        "fp": 42,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.049,
+        "recall": 1.0,
+        "f1": 0.093,
+        "tp": 2,
+        "fp": 39,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.067,
+        "recall": 1.0,
+        "f1": 0.125,
+        "tp": 2,
+        "fp": 28,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.091,
+        "recall": 1.0,
+        "f1": 0.167,
+        "tp": 2,
+        "fp": 20,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.095,
+        "recall": 1.0,
+        "f1": 0.174,
+        "tp": 2,
+        "fp": 19,
+        "fn": 0
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.105,
+        "recall": 1.0,
+        "f1": 0.19,
+        "tp": 2,
+        "fp": 17,
+        "fn": 0
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.118,
+        "recall": 1.0,
+        "f1": 0.211,
+        "tp": 2,
+        "fp": 15,
+        "fn": 0
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.154,
+        "recall": 1.0,
+        "f1": 0.267,
+        "tp": 2,
+        "fp": 11,
+        "fn": 0
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.083,
+        "recall": 0.5,
+        "f1": 0.143,
+        "tp": 1,
+        "fp": 11,
+        "fn": 1
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.091,
+        "recall": 0.5,
+        "f1": 0.154,
+        "tp": 1,
+        "fp": 10,
+        "fn": 1
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.1,
+        "recall": 0.5,
+        "f1": 0.167,
+        "tp": 1,
+        "fp": 9,
+        "fn": 1
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.111,
+        "recall": 0.5,
+        "f1": 0.182,
+        "tp": 1,
+        "fp": 8,
+        "fn": 1
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.143,
+        "recall": 0.5,
+        "f1": 0.222,
+        "tp": 1,
+        "fp": 6,
+        "fn": 1
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.167,
+        "recall": 0.5,
+        "f1": 0.25,
+        "tp": 1,
+        "fp": 5,
+        "fn": 1
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.2,
+        "recall": 0.5,
+        "f1": 0.286,
+        "tp": 1,
+        "fp": 4,
+        "fn": 1
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5,
+        "tp": 1,
+        "fp": 1,
+        "fn": 1
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 2
+      }
+    ]
+  },
+  "teknocan": {
+    "class_id": 6,
+    "status": "UYARI (düşük destek)",
+    "sample_tp": 0,
+    "sample_fp": 0,
+    "best_threshold": 0.25,
+    "best_f1": 0,
+    "best_precision": 0,
+    "best_recall": 0,
+    "recommended_threshold": 0.25,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    ]
+  },
+  "bilgisayar": {
+    "class_id": 7,
+    "status": "UYARI (düşük destek)",
+    "sample_tp": 0,
+    "sample_fp": 0,
+    "best_threshold": 0.25,
+    "best_f1": 0,
+    "best_precision": 0,
+    "best_recall": 0,
+    "recommended_threshold": 0.25,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0
+      }
+    ]
+  },
+  "license_plate": {
+    "class_id": 8,
+    "status": "ÖLÇÜLDÜ",
+    "sample_tp": 26,
+    "sample_fp": 336,
+    "best_threshold": 0.85,
+    "best_f1": 0.42,
+    "best_precision": 0.309,
+    "best_recall": 0.654,
+    "recommended_threshold": 0.85,
+    "thresholds": [
+      {
+        "threshold": 0.05,
+        "precision": 0.089,
+        "recall": 1.0,
+        "f1": 0.163,
+        "tp": 26,
+        "fp": 267,
+        "fn": 0
+      },
+      {
+        "threshold": 0.1,
+        "precision": 0.098,
+        "recall": 1.0,
+        "f1": 0.179,
+        "tp": 26,
+        "fp": 239,
+        "fn": 0
+      },
+      {
+        "threshold": 0.15,
+        "precision": 0.106,
+        "recall": 1.0,
+        "f1": 0.191,
+        "tp": 26,
+        "fp": 220,
+        "fn": 0
+      },
+      {
+        "threshold": 0.2,
+        "precision": 0.112,
+        "recall": 1.0,
+        "f1": 0.201,
+        "tp": 26,
+        "fp": 207,
+        "fn": 0
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.117,
+        "recall": 1.0,
+        "f1": 0.21,
+        "tp": 26,
+        "fp": 196,
+        "fn": 0
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.119,
+        "recall": 1.0,
+        "f1": 0.213,
+        "tp": 26,
+        "fp": 192,
+        "fn": 0
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.122,
+        "recall": 0.962,
+        "f1": 0.216,
+        "tp": 25,
+        "fp": 180,
+        "fn": 1
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.126,
+        "recall": 0.962,
+        "f1": 0.223,
+        "tp": 25,
+        "fp": 173,
+        "fn": 1
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.126,
+        "recall": 0.923,
+        "f1": 0.222,
+        "tp": 24,
+        "fp": 166,
+        "fn": 2
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.136,
+        "recall": 0.923,
+        "f1": 0.236,
+        "tp": 24,
+        "fp": 153,
+        "fn": 2
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.141,
+        "recall": 0.923,
+        "f1": 0.245,
+        "tp": 24,
+        "fp": 146,
+        "fn": 2
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.147,
+        "recall": 0.923,
+        "f1": 0.254,
+        "tp": 24,
+        "fp": 139,
+        "fn": 2
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.166,
+        "recall": 0.923,
+        "f1": 0.281,
+        "tp": 24,
+        "fp": 121,
+        "fn": 2
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.168,
+        "recall": 0.846,
+        "f1": 0.28,
+        "tp": 22,
+        "fp": 109,
+        "fn": 4
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.193,
+        "recall": 0.846,
+        "f1": 0.314,
+        "tp": 22,
+        "fp": 92,
+        "fn": 4
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.235,
+        "recall": 0.769,
+        "f1": 0.36,
+        "tp": 20,
+        "fp": 65,
+        "fn": 6
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.309,
+        "recall": 0.654,
+        "f1": 0.42,
+        "tp": 17,
+        "fp": 38,
+        "fn": 9
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.5,
+        "recall": 0.192,
+        "f1": 0.278,
+        "tp": 5,
+        "fp": 5,
+        "fn": 21
+      },
+      {
+        "threshold": 0.95,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 26
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "contract_name": "TEKNOFEST FTR 2026",
+  "hash_algorithm": "SHA-256",
+  "expected_classes": [
+    "telefonla_konusma",
+    "su_icme",
+    "arkaya_bakma",
+    "esneme",
+    "sigara_icme",
+    "emniyet_kemeri_ihlali",
+    "teknocan",
+    "bilgisayar",
+    "license_plate"
+  ],
+  "class_contract_hash": "a4d896173a11b0e9a7e801b6c7a22eb287e0766ef963884d0862080a221f7b7c"
+}

@@ -1,0 +1,12 @@
+{
+  "detector_onnx_sha256": "da1840434b6a13eae5205ff5ce7e41c60edc52d93a11c0d422fdaa86a966d5b9",
+  "detector_onnx_size_bytes": 51869892,
+  "coco_onnx_sha256": "edb3691ddad01f17810c1d3a79fb39c13d65ccbfbe2d9a42a79fb9ce608fede4",
+  "coco_onnx_size_bytes": 12953266,
+  "lprnet_onnx_sha256": "6c8ff0a71bc4bb0d7c5a8ee87a2c77b3df0a99a0122764d18c6260875383aa50",
+  "lprnet_onnx_size_bytes": 1787932,
+  "crnn_onnx_sha256": "f95f0b8d5f23d846ed33491002c130bd1fdba18c7e3c5dd773c55dec9ce3cc53",
+  "crnn_onnx_size_bytes": 47067386,
+  "cnn_lstm_onnx_sha256": "c432cefec4686699fec7271c5260b22f167e61c504741723e3794863f09f3039",
+  "cnn_lstm_onnx_size_bytes": 2436
+}

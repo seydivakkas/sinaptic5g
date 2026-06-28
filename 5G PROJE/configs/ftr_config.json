@@ -1,0 +1,44 @@
+{
+  "class_map": {
+    "0": "telefonla_konusma",
+    "1": "su_icme",
+    "2": "arkaya_bakma",
+    "3": "esneme",
+    "4": "sigara_icme",
+    "5": "emniyet_kemeri_ihlali",
+    "6": "teknocan",
+    "7": "bilgisayar",
+    "8": "license_plate"
+  },
+  "thresholds": {
+    "telefonla_konusma": 0.30,
+    "su_icme": 0.40,
+    "arkaya_bakma": 0.25,
+    "esneme": 0.25,
+    "sigara_icme": 0.45,
+    "emniyet_kemeri_ihlali": 0.30,
+    "teknocan": 0.35,
+    "bilgisayar": 0.30,
+    "license_plate": 0.40
+  },
+  "default_threshold": 0.35,
+  "zero_dce_brightness_threshold": 80,
+  "model_registry": {
+    "detector": {
+      "path": "models/detector_optimized.onnx",
+      "expected_sha256": "da1840434b6a13eae5205ff5ce7e41c60edc52d93a11c0d422fdaa86a966d5b9"
+    },
+    "coco": {
+      "path": "yolov8n.onnx",
+      "expected_sha256": "edb3691ddad01f17810c1d3a79fb39c13d65ccbfbe2d9a42a79fb9ce608fede4"
+    },
+    "lprnet": {
+      "path": "models/lprnet.onnx",
+      "expected_sha256": "6c8ff0a71bc4bb0d7c5a8ee87a2c77b3df0a99a0122764d18c6260875383aa50"
+    },
+    "crnn": {
+      "path": "models/crnn.onnx",
+      "expected_sha256": "f95f0b8d5f23d846ed33491002c130bd1fdba18c7e3c5dd773c55dec9ce3cc53"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# SİNAPTİK5G BoT-SORT configuration
+# Highly optimized for T4/RTX 4070 vehicle tracking
+
+tracker_type: botsort
+
+# --- Thresholds ---
+track_high_thresh: 0.45   # First association threshold (aligned with competition spec)
+track_low_thresh: 0.15    # Second association threshold (recovers partially occluded vehicles)
+new_track_thresh: 0.50    # Minimum confidence to initialize a new track (prevents noise)
+
+# --- Buffer & Matching ---
+track_buffer: 45          # Number of frames to keep lost track alive (45 frames @ 25 FPS = ~1.8 seconds)
+match_thresh: 0.80        # Multi-object tracking IoU match threshold
+proximity_thresh: 0.50
+appearance_thresh: 0.25
+
+# --- Camera Motion Compensation ---
+cmc_method: sparseOptFlow # Light-weight, fast optical flow estimation (great for RTX 4070 Laptop)
+
+# --- ReID settings ---
+with_reid: False          # Disabled to minimize VRAM usage and keep latency low (<48ms)

@@ -1,0 +1,7 @@
+{
+  "best_pt_sha256": "69f579ad3e429542b64ecdeafbe7bd027d9ed8309d84be8f2775d00b7f484778",
+  "detector_v5_onnx_sha256": "da1840434b6a13eae5205ff5ce7e41c60edc52d93a11c0d422fdaa86a966d5b9",
+  "best_pt_size_bytes": 52043519,
+  "detector_v5_onnx_size_bytes": 51869892,
+  "status": "VERIFIED"
+}

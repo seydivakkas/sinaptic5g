@@ -1,0 +1,10 @@
+class_id,class_name,v4_train_support,v5_train_support,v4_val_support,v5_val_support
+0,telefonla_konusma,1750,1907,500,500
+1,su_icme,702,773,201,201
+2,arkaya_bakma,709,785,202,202
+3,esneme,705,762,197,197
+4,sigara_icme,5446,5968,1536,1536
+5,emniyet_kemeri_ihlali,654,1260,186,186
+6,teknocan,90,723,20,58
+7,bilgisayar,335,662,10,50
+8,license_plate,1440,1596,402,402

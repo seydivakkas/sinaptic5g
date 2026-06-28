@@ -1,0 +1,96 @@
+{
+  "audit": {
+    "missing_sources": [],
+    "skipped_duplicates": 109,
+    "skipped_unmapped": 10310
+  },
+  "counts": {
+    "test": {
+      "images": 1395,
+      "instances": {
+        "0": 250,
+        "1": 100,
+        "2": 101,
+        "3": 102,
+        "4": 758,
+        "5": 93,
+        "6": 10,
+        "7": 6,
+        "8": 219
+      },
+      "sources": {
+        "cigarette_smokers_v5": 547,
+        "detect_laptop": 5,
+        "detect_seatbelt_v7": 36,
+        "driver_distraction_v3": 380,
+        "driver_drowsiness_v4": 68,
+        "kaggle_turkish_license_plate_2776891": 195,
+        "mobile_seatbelt": 105,
+        "seatbelt_v1": 50,
+        "soft_toy": 9
+      }
+    },
+    "train": {
+      "images": 10218,
+      "instances": {
+        "0": 1750,
+        "1": 702,
+        "2": 709,
+        "3": 705,
+        "4": 5446,
+        "5": 654,
+        "6": 290,
+        "7": 335,
+        "8": 1440
+      },
+      "sources": {
+        "cigarette_smokers_v5": 3757,
+        "detect_laptop": 32,
+        "detect_seatbelt_v7": 267,
+        "driver_distraction_v3": 2664,
+        "driver_drowsiness_v4": 470,
+        "kaggle_turkish_license_plate_2776891": 1362,
+        "laptop_incar": 300,
+        "mobile_seatbelt": 732,
+        "seatbelt_v1": 350,
+        "soft_toy": 84,
+        "teknocan_synthetic": 200
+      }
+    },
+    "val": {
+      "images": 2787,
+      "instances": {
+        "0": 500,
+        "1": 201,
+        "2": 202,
+        "3": 197,
+        "4": 1536,
+        "5": 186,
+        "6": 20,
+        "7": 10,
+        "8": 402
+      },
+      "sources": {
+        "cigarette_smokers_v5": 1091,
+        "detect_laptop": 9,
+        "detect_seatbelt_v7": 81,
+        "driver_distraction_v3": 761,
+        "driver_drowsiness_v4": 130,
+        "kaggle_turkish_license_plate_2776891": 389,
+        "mobile_seatbelt": 209,
+        "seatbelt_v1": 100,
+        "soft_toy": 17
+      }
+    }
+  },
+  "manifest_sha256": "dadc041aec4152e62e5cb77a39d9c3793bb34720ea5162a2a93897ad8633b889",
+  "materialization": {
+    "hardlink": 14400
+  },
+  "seed": 2026,
+  "split_ratios_target": {
+    "test": 0.1,
+    "train": 0.7,
+    "val": 0.2
+  }
+}

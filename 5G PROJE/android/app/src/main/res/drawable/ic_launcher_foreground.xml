@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Sinaptic5G — S harfi ikonu (Sinaptik nöron temalı) -->
+    <path
+        android:fillColor="#00D4FF"
+        android:pathData="M54,20 C38,20 25,33 25,49 C25,60 31,69 40,74 C49,79 54,84 54,88 C54,92 51,95 47,95 L35,95 L35,100 L54,100 C70,100 83,87 83,71 C83,60 77,51 68,46 C59,41 54,36 54,32 C54,28 57,25 61,25 L73,25 L73,20 Z"/>
+</vector>

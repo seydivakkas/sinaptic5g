@@ -1,0 +1,2 @@
+Bu dosya assets klasörünün varligini saglamak icin olusturulmustur.
+Gercek TFLite modelleri (yolov8n.tflite, zero_dce.tflite) bu klasore kopyalanacaktir.

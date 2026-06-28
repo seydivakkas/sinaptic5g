@@ -1,0 +1,212 @@
+version: 1
+canonical_detection_classes:
+  0: telefonla_konusma
+  1: su_icme
+  2: arkaya_bakma
+  3: esneme
+  4: sigara_icme
+  5: emniyet_kemeri_ihlali
+  6: teknocan
+  7: bilgisayar
+  8: license_plate
+
+# A source is trainable only when enabled=true and its licence/access evidence is
+# recorded here.  Requested sources that cannot legally or technically be fetched
+# without a human step stay visible as blocked instead of silently disappearing.
+sources:
+  detect_laptop:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/detect_laptop
+    splits: [train, valid, test]
+    label_map: {0: 7}
+    url: https://universe.roboflow.com/yolo-8bzqk/detect-laptop-frii1
+    license: CC-BY-4.0
+    evidence: data/raw/detect_laptop/data.yaml
+
+  soft_toy:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/soft_toy
+    splits: [train, valid, test]
+    label_map: {0: 6, 1: 6, 2: 6, 3: 6, 4: 6, 5: 6, 6: 6, 7: 6, 8: 6, 9: 6}
+    url: https://universe.roboflow.com/felipe-guimaraes/soft-toy
+    license: CC-BY-4.0
+    evidence: data/raw/soft_toy/data.yaml
+
+  mobile_seatbelt:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/mobile_seatbelt
+    splits: [train, valid, test]
+    label_map: {0: 0}
+    url: https://universe.roboflow.com/yolov8-yz9vg/mobile-and-seatbelt
+    license: CC-BY-4.0
+    evidence: data/raw/mobile_seatbelt/data.yaml
+
+  teknocan_local:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/processed/teknocan
+    splits: [train, val, test]
+    label_map: {6: 6}
+    url: local
+    license: custom-non-commercial
+    evidence: scripts/f5_process_teknocan.py
+
+  driver_distraction_v3:
+    enabled: true
+    task: detection
+    format: yolo
+    root: dataset/open_datasets/driver_distraction/datasets
+    splits: [train, valid, test]
+    label_map: {1: 0, 2: 0, 4: 1, 5: 2, 9: 3}
+    url: https://universe.roboflow.com/areeba-fmpau/driver-distraction-detection-jsu2o/dataset/3
+    license: CC-BY-4.0
+    evidence: dataset/open_datasets/driver_distraction/data.yaml
+
+  driver_drowsiness_v4:
+    enabled: true
+    task: detection
+    format: yolo
+    root: dataset/open_datasets/driver_drowsiness
+    splits: [train, valid, test]
+    label_map: {2: 3}
+    url: https://universe.roboflow.com/driver-drowsiness-59y8h/driver_drowsiness_yolo-2duii/dataset/4
+    license: CC-BY-4.0
+    evidence: dataset/open_datasets/driver_drowsiness/data.yaml
+
+  cigarette_smokers_v5:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/cigarette
+    splits: [train, valid, test]
+    label_map: {0: 4}
+    url: https://universe.roboflow.com/smoking-t7kym/cigarette-smokers-cnbaf/dataset/5
+    license: CC-BY-4.0
+    evidence: data/raw/cigarette/data.yaml
+
+  detect_seatbelt_v7:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/seatbelt
+    splits: [train, valid, test]
+    label_map: {0: 5, 1: 5}
+    url: https://universe.roboflow.com/seatbelt-y0rvu/detect-seatbelt-whvbz/dataset/7
+    license: CC-BY-4.0
+    evidence: data/raw/seatbelt/data.yaml
+
+  kaggle_turkish_license_plate_2776891:
+    enabled: true
+    task: detection
+    format: yolo-flat
+    root: dataset/open_datasets/turkish_plate_real
+    images_dir: images
+    labels_dir: label
+    label_map: {0: 8}
+    url: https://www.kaggle.com/datasets/smaildurcan/turkish-license-plate-dataset
+    license: CC0-1.0
+    evidence: dataset/LICENSE_INVENTORY.md
+
+  drive_and_act:
+    enabled: true
+    task: temporal-classification
+    format: video-csv
+    root: data/external/drive_and_act
+    url: https://driveandact.com/
+    license: citation-required-academic-dataset
+    access: direct-download
+    note: RGB video is 5.26 GB; annotations are temporal, not YOLO boxes.
+    artifacts:
+      iccv_activities_3s.zip: d200ad6a00f2f374cf4cfe54fcf6565bb17eb25961829ae71eb75d89033a760a
+      iccv_interior.zip: f1438d31fbc686579e126f9be7c9aa8ec4f4993a07ab26b31d5ef54b73f40db0
+      kinect_color.zip: 05fa4cfa6d55f8e2a7abca9e1e7b31ccbbc7497a035f273e620d6672c1946ad3
+
+  vcor:
+    enabled: false
+    task: color-classification
+    format: folder-classification
+    url: https://github.com/ArminAmani/Color-Detection
+    license: unverified
+    access: blocked-no-dataset-archive
+    note: Repository describes VCoR but contains neither the image archive nor a dataset licence.
+
+  dmd_official_2026:
+    enabled: false
+    task: temporal-classification
+    format: openlabel-video
+    url: https://dmd.vicomtech.org/
+    license: academic-use-request
+    access: blocked-request-form
+    note: Official 2026 release requires name, organisation and email; it is not a YOLO export.
+
+  stanford_cars_196:
+    enabled: false
+    task: vehicle-model-classification
+    format: matlab-bbox-classification
+    url: https://ai.stanford.edu/~jkrause/cars/car_dataset.html
+    license: unverified
+    access: blocked-upstream-404
+    note: Official image and annotation URLs return 404; mirrors are not accepted without provenance.
+
+  ufpr_vcr:
+    enabled: false
+    task: color-classification
+    format: folder-classification
+    url: https://github.com/Lima001/UFPR-VCR-Dataset
+    license: academic-non-commercial-signed-agreement
+    access: blocked-signed-agreement
+    note: Access requires a signed licence agreement and an institutional email.
+
+  bigailab_trvlp_20k:
+    enabled: false
+    task: plate-recognition
+    format: unknown
+    url: null
+    license: unverified
+    access: blocked-source-not-found
+    note: No authoritative dataset page was found for this exact name; an exact URL is required.
+
+  laptop_incar:
+    enabled: true
+    task: detection
+    format: yolo-flat
+    root: data/raw/laptop_incar
+    images_dir: images
+    labels_dir: labels
+    label_map: {7: 7}
+    url: local-synthetic
+    license: proprietary-all-rights-reserved
+    evidence: scripts/generate_laptop_incar.py
+
+  teknocan_synthetic:
+    enabled: true
+    task: detection
+    format: yolo-flat
+    root: data/raw/teknocan_synthetic
+    images_dir: images
+    labels_dir: labels
+    label_map: {6: 6}
+    url: local-synthetic
+    license: proprietary-all-rights-reserved
+    evidence: scripts/generate_teknocan_synthetic.py
+
+  seatbelt_v1:
+    enabled: true
+    task: detection
+    format: yolo
+    root: data/raw/seatbelt_v1
+    splits: [train, valid, test]
+    label_map: {1: 5}
+    url: https://universe.roboflow.com/seatbelt-y0rvu/seat-belt-detection-c3csr-6gbyf
+    license: CC-BY-4.0
+    evidence: data/raw/seatbelt_v1/data.yaml
+
+
+

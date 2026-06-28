@@ -1,0 +1,6 @@
+FINAL APK HASH VERIFICATION:
+To compute the SHA-256 hash of the compiled APK on the host terminal, run:
+  Get-FileHash D:\SİNAPTİC\output\android\SINAPTIC5G-debug.apk -Algorithm SHA256
+
+Once computed, please append the output hash below:
+SHA-256: <to_be_filled_after_compilation>

@@ -1,0 +1,21 @@
+{
+  "precision": 0.793,
+  "recall": 0.751,
+  "f1": 0.7714,
+  "mAP_50": 0.7457,
+  "mAP_50_95": 0.471,
+  "instances": 1744,
+  "split": "test",
+  "evidence": "reports/markdown_table.txt",
+  "classes": {
+    "0": "telefonla_konusma",
+    "1": "su_icme",
+    "2": "arkaya_bakma",
+    "3": "esneme",
+    "4": "sigara_icme",
+    "5": "emniyet_kemeri_ihlali",
+    "6": "teknocan",
+    "7": "bilgisayar",
+    "8": "license_plate"
+  }
+}

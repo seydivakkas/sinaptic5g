@@ -1,0 +1,61 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+#
+# Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim
+# amaçlı olarak paylaşılmıştır.
+
+# Resmî değerlendirme ortamıyla aynı CUDA tabanı; PyTorch gerekmez.
+# Kanonik teslim Dockerfile'ı. `5G PROJE/` dizininden çalıştır:
+#   docker build -t teknofest/sinaptic5g:latest .
+FROM nvidia/cuda:12.1.0-base-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    NVIDIA_VISIBLE_DEVICES=all \
+    NVIDIA_DRIVER_CAPABILITIES=compute,utility \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+RUN echo 'Acquire::Retries "3";' > /etc/apt/apt.conf.d/80-retries
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip libglib2.0-0 libgl1 libcudnn9-cuda-12 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-ftr.txt /tmp/requirements-ftr.txt
+RUN python3 -m pip install --no-cache-dir -r /tmp/requirements-ftr.txt \
+    && rm -rf /tmp/requirements-ftr.txt
+
+# Kaynak dosyalar — seçici COPY (image boyutunu minimize eder)
+COPY ftr_core/ftr_main.py /app/main.py
+COPY ftr_core/plate_ocr.py /app/plate_ocr.py
+COPY ftr_core/driver_analyzer.py /app/driver_analyzer.py
+COPY ftr_core/speed_estimator.py /app/speed_estimator.py
+COPY ftr_core/src/ /app/src/
+COPY configs/ftr_config.json /app/configs/ftr_config.json
+COPY schemas/results.schema.json /app/schemas/results.schema.json
+COPY label_contract.yaml /app/label_contract.yaml
+COPY model_lock.json /app/model_lock.json
+
+# Model ağırlıkları (FTR çıkarımı için zorunlu; /app/models altında statik)
+COPY yolov8n.onnx /app/models/coco.onnx
+COPY models/detector_optimized.onnx /app/models/detector_optimized.onnx
+COPY models/lprnet.onnx /app/models/lprnet.onnx
+COPY models/crnn.onnx /app/models/crnn.onnx
+COPY models/cnn_lstm.onnx /app/models/cnn_lstm.onnx
+
+# Çalışma dizinleri oluştur ve izinleri ayarla
+RUN mkdir -p /app/data/input /app/data/output \
+    && chmod -R a+rX /app \
+    && chmod a+rwX /app/data/output
+
+# Hakem docker run komutu:
+# docker run --rm --gpus all --network none \
+#   -v <video.mp4>:/app/data/input/video.mp4:ro \
+#   -v <output-dir>:/app/data/output:rw \
+#   teknofest/sinaptic5g:latest
+ENTRYPOINT ["python3", "/app/main.py"]
+

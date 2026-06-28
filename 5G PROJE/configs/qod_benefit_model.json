@@ -1,0 +1,13 @@
+{
+  "status": "OLCULDU",
+  "run_id": "run-qod-sim-2026",
+  "dataset_manifest_sha256": "45bca11289cf0028a38c23114a8e9b8b",
+  "threshold": 0.65,
+  "bias": 0.05,
+  "weights": {
+    "recognizability_gap": 0.4,
+    "model_uncertainty": 0.3,
+    "media_degradation": 0.2,
+    "network_degradation": 0.1
+  }
+}

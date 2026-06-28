@@ -1,0 +1,106 @@
+{
+  "n_samples": 14,
+  "exact_match_count": 14,
+  "exact_match_rate": 1.0,
+  "mean_cer": 0.0,
+  "details": [
+    {
+      "image": "plate_001.jpg",
+      "gt": "34TR1001",
+      "pred": "34TR1001",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_002.jpg",
+      "gt": "34TR1002",
+      "pred": "34TR1002",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_003.jpg",
+      "gt": "34TR1003",
+      "pred": "34TR1003",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_004.jpg",
+      "gt": "34TR1004",
+      "pred": "34TR1004",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_005.jpg",
+      "gt": "34TR1005",
+      "pred": "34TR1005",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_006.jpg",
+      "gt": "34TR1006",
+      "pred": "34TR1006",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_007.jpg",
+      "gt": "34TR1007",
+      "pred": "34TR1007",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_008.jpg",
+      "gt": "34TR1008",
+      "pred": "34TR1008",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_009.jpg",
+      "gt": "34TR1009",
+      "pred": "34TR1009",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_010.jpg",
+      "gt": "34TR1010",
+      "pred": "34TR1010",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_011.jpg",
+      "gt": "34TR1011",
+      "pred": "34TR1011",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_012.jpg",
+      "gt": "34TR1012",
+      "pred": "34TR1012",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_013.jpg",
+      "gt": "34TR1013",
+      "pred": "34TR1013",
+      "exact_match": true,
+      "cer": 0.0
+    },
+    {
+      "image": "plate_014.jpg",
+      "gt": "34TR1014",
+      "pred": "34TR1014",
+      "exact_match": true,
+      "cer": 0.0
+    }
+  ]
+}

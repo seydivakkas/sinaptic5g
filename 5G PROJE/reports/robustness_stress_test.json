@@ -1,0 +1,151 @@
+{
+  "model": "detector.onnx",
+  "sample_size": 30,
+  "conf_threshold": 0.25,
+  "perturbations": {
+    "original": {
+      "avg_det_count": 9.7,
+      "avg_confidence": 0.424,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": null,
+        "su_icme": null,
+        "arkaya_bakma": 0.705,
+        "esneme": 0.287,
+        "sigara_icme": 0.567,
+        "emniyet_kemeri_ihlali": 0.384,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.71
+      },
+      "delta_det_count": 0.0,
+      "delta_avg_confidence": 0.0
+    },
+    "brightness_low": {
+      "avg_det_count": 9.6,
+      "avg_confidence": 0.412,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": null,
+        "su_icme": null,
+        "arkaya_bakma": 0.645,
+        "esneme": 0.314,
+        "sigara_icme": 0.562,
+        "emniyet_kemeri_ihlali": 0.386,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.703
+      },
+      "delta_det_count": -0.1,
+      "delta_avg_confidence": -0.012
+    },
+    "brightness_high": {
+      "avg_det_count": 8.43,
+      "avg_confidence": 0.362,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": null,
+        "su_icme": null,
+        "arkaya_bakma": 0.72,
+        "esneme": null,
+        "sigara_icme": 0.526,
+        "emniyet_kemeri_ihlali": 0.378,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.702
+      },
+      "delta_det_count": -1.27,
+      "delta_avg_confidence": -0.062
+    },
+    "contrast_low": {
+      "avg_det_count": 10.17,
+      "avg_confidence": 0.441,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": null,
+        "su_icme": 0.358,
+        "arkaya_bakma": 0.701,
+        "esneme": 0.321,
+        "sigara_icme": 0.545,
+        "emniyet_kemeri_ihlali": 0.365,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.692
+      },
+      "delta_det_count": 0.47,
+      "delta_avg_confidence": 0.017
+    },
+    "gaussian_noise": {
+      "avg_det_count": 8.33,
+      "avg_confidence": 0.406,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": 0.392,
+        "su_icme": null,
+        "arkaya_bakma": 0.624,
+        "esneme": 0.263,
+        "sigara_icme": 0.546,
+        "emniyet_kemeri_ihlali": 0.302,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.681
+      },
+      "delta_det_count": -1.37,
+      "delta_avg_confidence": -0.018
+    },
+    "motion_blur": {
+      "avg_det_count": 5.97,
+      "avg_confidence": 0.279,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": 0.282,
+        "su_icme": null,
+        "arkaya_bakma": 0.554,
+        "esneme": null,
+        "sigara_icme": 0.525,
+        "emniyet_kemeri_ihlali": 0.301,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.667
+      },
+      "delta_det_count": -3.73,
+      "delta_avg_confidence": -0.145
+    },
+    "jpeg_compress": {
+      "avg_det_count": 7.5,
+      "avg_confidence": 0.384,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": 0.37,
+        "su_icme": null,
+        "arkaya_bakma": null,
+        "esneme": 0.253,
+        "sigara_icme": 0.488,
+        "emniyet_kemeri_ihlali": 0.366,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.705
+      },
+      "delta_det_count": -2.2,
+      "delta_avg_confidence": -0.04
+    },
+    "downscale_up": {
+      "avg_det_count": 4.23,
+      "avg_confidence": 0.241,
+      "failures": 0,
+      "class_avg_conf": {
+        "telefonla_konusma": null,
+        "su_icme": null,
+        "arkaya_bakma": null,
+        "esneme": null,
+        "sigara_icme": 0.415,
+        "emniyet_kemeri_ihlali": 0.381,
+        "teknocan": null,
+        "bilgisayar": null,
+        "license_plate": 0.656
+      },
+      "delta_det_count": -5.47,
+      "delta_avg_confidence": -0.183
+    }
+  }
+}

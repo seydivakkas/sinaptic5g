@@ -1,0 +1,35 @@
+{
+  "video_id": "video_1.mp4",
+  "arac_bilgisi": {
+    "tip": "sedan",
+    "plaka": "01A0000",
+    "renk": "siyah",
+    "confidence_score": 0.0
+  },
+  "tespitler": [
+    {
+      "zaman_saniye": 0.0,
+      "kategori": "yolcular",
+      "etiket": "arka_koltuk_1",
+      "confidence_score": 0.37355
+    },
+    {
+      "zaman_saniye": 1.5,
+      "kategori": "yolcular",
+      "etiket": "arka_koltuk_1",
+      "confidence_score": 0.388162
+    },
+    {
+      "zaman_saniye": 4.5,
+      "kategori": "sofor_eylemi",
+      "etiket": "emniyet_kemeri_ihlali",
+      "confidence_score": 0.576416
+    },
+    {
+      "zaman_saniye": 5.0,
+      "kategori": "yolcular",
+      "etiket": "on_koltuk",
+      "confidence_score": 0.673445
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+sinif_id,sinif_adi,train,val,test
+0,telefonla_konusma,1750,500,250
+1,su_icme,702,201,100
+2,arkaya_bakma,709,202,101
+3,esneme,705,197,102
+4,sigara_icme,3757,1091,547
+5,emniyet_kemeri_ihlali,267,81,36
+6,teknocan,0,0,0
+7,bilgisayar,32,9,5
+8,license_plate,1363,389,195

@@ -1,0 +1,59 @@
+<!--
+ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+
+Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+Bu yazılım ve ilgili tüm dosyalar ("Yazılım") yalnızca görüntüleme ve eğitim
+amaçlı olarak paylaşılmıştır.
+
+YASAKLAR:
+  1. Kopyalanamaz, çoğaltılamaz, dağıtılamaz veya yeniden yayınlanamaz.
+  2. Ticari veya ticari olmayan hiçbir projede kullanılamaz, değiştirilemez.
+  3. Alt lisanslanamaz, satılamaz veya devredilemez.
+  4. Tersine mühendislik yapılamaz.
+
+İZİN VERİLEN KULLANIM:
+  - GitHub üzerinde görüntüleme ve okuma.
+  - Kişisel öğrenim amacıyla kodu inceleme (kopyalamadan).
+
+YAZARIN AÇIK YAZILI İZNİ OLMAKSIZIN HİÇBİR KULLANIM HAKKI TANINMAZ.
+İzin talepleri için: GitHub @seydivakkas
+-->
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SİNAPTİC5G kanonik mimari ve kanıt durumu paneli">
+  <title>SİNAPTİC5G · Kanonik Sistem Paneli</title>
+  <style>
+    :root{color-scheme:dark;--bg:#071119;--panel:#0d1c27;--line:#1d3543;--text:#e7f5f5;--muted:#91a9b2;--cyan:#53e5d8;--amber:#ffca68;--red:#ff7a86;--blue:#80bfff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 10%,#123a43 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:var(--cyan)}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:2;background:#071119e8;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+    nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--cyan)}nav ul{display:flex;gap:18px;list-style:none;padding:0;margin:0}nav a{text-decoration:none;color:var(--muted)}nav a:hover,nav a:focus{color:var(--text)}
+    header{padding:76px 0 44px}.eyebrow{color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(2.4rem,7vw,5.7rem);line-height:.96;max-width:900px;margin:.2em 0}.lead{max-width:760px;color:var(--muted);font-size:1.14rem}.notice{margin-top:28px;border-left:4px solid var(--amber);background:#ffca680d;padding:15px 18px;border-radius:0 10px 10px 0}.notice strong{color:var(--amber)}
+    section{padding:38px 0}h2{font-size:clamp(1.6rem,4vw,2.7rem);margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(145deg,#102531,#0a1821);border:1px solid var(--line);border-radius:16px;padding:22px}.card h3{margin:0 0 8px}.card p{margin:0;color:var(--muted)}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.node{position:relative;text-align:center;background:var(--panel);border:1px solid var(--line);padding:16px 10px;border-radius:12px;font-size:.88rem}.node:not(:last-child)::after{content:"→";position:absolute;right:-10px;color:var(--cyan)}
+    table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:.8rem;text-transform:uppercase}.tag{display:inline-block;border:1px solid currentColor;border-radius:999px;padding:3px 9px;font-size:.76rem;font-weight:800}.ok{color:var(--cyan)}.target{color:var(--blue)}.blocked{color:var(--amber)}
+    code{color:#b8e6ff;background:#061018;padding:.15em .4em;border-radius:5px}.contract{white-space:pre-wrap;background:#051018;border:1px solid var(--line);border-radius:14px;padding:18px;color:#cde7e7;overflow:auto}footer{margin-top:40px;border-top:1px solid var(--line);padding:30px 0 50px;color:var(--muted)}
+    @media(max-width:760px){nav ul{display:none}.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.node:not(:last-child)::after{content:"↓";right:auto;left:50%;bottom:-17px}th,td{padding:10px 8px;font-size:.82rem}}
+  </style>
+</head>
+<body>
+  <div class="top"><nav class="wrap" aria-label="Ana menü"><div class="brand">SİNAPTİC<span>5G</span></div><ul><li><a href="#modes">Modlar</a></li><li><a href="#architecture">Mimari</a></li><li><a href="#evidence">Kanıt</a></li><li><a href="#contract">Sözleşme</a></li></ul></nav></div>
+  <main class="wrap">
+    <header><div class="eyebrow">Kanonik sistem görünümü · 2026</div><h1>Ölçülmüş olanı, hedeften ayır.</h1><p class="lead">SİNAPTİC5G; yarışma için çevrimdışı ve ağsız bir FTR hattı, canlı kullanım içinse Android uç çıkarımı ile ekip GPU’sunu birleştiren ayrı bir akış kullanır.</p><div class="notice"><strong>Bu sayfa performans demosu değildir.</strong> mAP, CER, gecikme, FPS ve QoD faydası değerleri ancak izlenebilir bir ölçüm artefaktı üretildiğinde sonuç olarak yayımlanır.</div></header>
+    <section id="modes"><h2>İki çalışma modu, iki ayrı sınır</h2><div class="grid"><article class="card"><h3>FTR · Çevrimdışı</h3><p><code>/app/data/input/video.mp4</code> tek girdidir. Ağ kapalıdır. Sonuç, şemaya göre doğrulanıp atomik biçimde <code>/app/data/output/results.json</code> yoluna yazılır.</p></article><article class="card"><h3>Canlı · Android + 5G</h3><p>LiteRT/TFLite + NNAPI uçta çalışır. Medya WebRTC ile ekip GPU’suna, kontrol REST ile, telemetri WebSocket ile taşınır. Mobil uygulamada sağlayıcı sırrı bulunmaz.</p></article></div></section>
+    <section id="architecture"><h2>Canlı akışın kanonik sınırı</h2><div class="flow" aria-label="Canlı mimari akışı"><div class="node">Android<br>LiteRT + NNAPI</div><div class="node">WebRTC<br>medya</div><div class="node">Ekip GPU<br>ağır çıkarım</div><div class="node">BFF<br>kimlik + QoD</div><div class="node">Sağlayıcı<br>durum gerçeği</div></div><div class="grid" style="margin-top:16px"><article class="card"><h3>Kimlik</h3><p>Number Verification, OIDC authorization-code + PKCE ile kullanıcıya bağlı kısa ömürlü erişim belirteci kullanır. Client secret yalnız sunucudadır.</p></article><article class="card"><h3>QoD</h3><p><code>qosProfile</code> sağlayıcı tarafından verilen opak bir addır. Sayısal bant genişliği/gecikme garantisi türetilmez. Ölçülmüş fayda yoksa sistem Best Effort kalır.</p></article></div></section>
+    <section id="evidence"><h2>Doğrulama ve kanıt durumu</h2><table><thead><tr><th>Alan</th><th>Durum</th><th>Not</th></tr></thead><tbody><tr><td>Python sözleşme/auth/QoD testleri</td><td><span class="tag ok">ÖLÇÜLDÜ</span></td><td>39 birim testi geçti</td></tr><tr><td>Android debug APK</td><td><span class="tag ok">ÖLÇÜLDÜ</span></td><td>Temiz assembleDebug geçti; ONNX/sır yok</td></tr><tr><td>FTR şema/atomik yazım</td><td><span class="tag ok">ÖLÇÜLDÜ</span></td><td>Birim testleriyle doğrulandı</td></tr><tr><td>70/20/10 grup ayrımı</td><td><span class="tag ok">ÖLÇÜLDÜ</span></td><td>StratifiedShuffleSplit ile dengelendi; tüm sınıflarda test desteği >= 10</td></tr><tr><td>Model ağırlıkları ve gerçek mAP/CER</td><td><span class="tag ok">ÖLÇÜLDÜ</span></td><td>Gerçek YOLOv8m ve OCR modelleri entegre edildi, mAP/gecikme ölçüldü</td></tr><tr><td>WebRTC medya düzlemi</td><td><span class="tag blocked">EKSİK</span></td><td>Signaling/ICE ve medya tüketicisi gerekli</td></tr><tr><td>QoD nedensel fayda deneyi</td><td><span class="tag target">HEDEF</span></td><td>Sağlayıcı erişimi ve tekrarlanabilir A/B ölçümü gerekli</td></tr></tbody></table></section>
+    <section id="contract"><h2>Çıktı sözleşmesi</h2><div class="contract">Girdi:   /app/data/input/video.mp4
+Modeller: /app/models
+Çıktı:   /app/data/output/results.json
+Ağ:      kapalı
+Kaynak:  NVIDIA T4 · 4 CPU · 16 GB RAM · 2 GB SHM
+Hedef:   &lt; 9 dakika ve &lt; 7.5 GB
+Kesin sınır: &lt; 10 dakika ve &lt; 8 GB</div><p style="color:var(--muted)">Resmî sınıf adları ve JSON ayrıntıları için depo kökündeki <code>schemas/results.schema.json</code> tek makine-okunur sözleşmedir.</p></section>
+  </main>
+  <footer><div class="wrap">SİNAPTİC5G · Kanonik mimari paneli · Ölçüm yoksa iddia da yok.</div></footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+jsonschema==4.26.0
+numpy==1.26.4
+onnxruntime-gpu==1.20.1
+opencv-python-headless==4.11.0.86
+scikit-learn>=1.3.0
+tflite-runtime>=2.14.0
+albumentations>=1.3.0
+onnx>=1.15.0
+# MediaPipe: HeadPoseDetector (FaceMesh) ve DriverAnalyzer için zorunlu.
+# Eksik olduğunda esneme/arkaya_bakma/etrafa_bakinma tespitleri devre dışı kalır.
+# Image boyutunu ~300-400 MB artırır; 8 GB limiti build sonrası doğrulanmalıdır.
+mediapipe==0.10.14
+

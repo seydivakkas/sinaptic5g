@@ -1,0 +1,1 @@
+detect-laptop veri setindeki goruntulerin hepsi (toplam 122 resim) arac disi (ofis/ev) arka plana sahiptir. Bu durum modelin arac ici kullanim icin genelleme yapmasini zorlastirmaktadir. Manuel olarak incelenmesi ve arac ici bilgisayar goruntuleriyle desteklenmesi gerekmektedir.

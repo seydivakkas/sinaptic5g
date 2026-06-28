@@ -1,0 +1,5 @@
+# Varsayılan kurulum canlı BFF bağımlılıklarıdır.
+-r requirements-live.txt
+
+# FTR imajı yalnız requirements-ftr.txt kullanır. Eğitim/deney bağımlılıkları
+# kanıtlanmış model artefaktları üretilene kadar archive/legacy-tools altındadır.

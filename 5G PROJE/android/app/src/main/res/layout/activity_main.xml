@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_main.xml — Sinaptic5G TripWire Ana Ekran Layout -->
+<!-- Yatay (landscape) tasarım: Sol kamera önizleme, Sağ panel -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    tools:context=".MainActivity">
+
+    <!-- ─── Sol: Kamera Önizleme ──────────────────────────────────── -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/panelRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.65" />
+
+    <!-- Video oynatıcı (TextureView) -->
+    <TextureView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/panelRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Kamera üstü overlay: Bounding box canvas -->
+    <com.sinaptic.tripwire.ui.DetectionOverlayView
+        android:id="@+id/detectionOverlay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/panelRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- FPS sayacı (kamera üstünde) -->
+    <TextView
+        android:id="@+id/txtFps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="#80000000"
+        android:padding="4dp"
+        android:text="0 FPS"
+        android:textColor="#00FF88"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ─── Sağ: Bilgi Paneli ──────────────────────────────────────── -->
+    <ScrollView
+        android:id="@+id/panelRight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/panel_bg"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/viewFinder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.35">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+        <!-- Logo & Başlık -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SINAPTIC5G"
+            android:textColor="@color/accent_cyan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TripWire — Akilli Yol Güvenligi"
+            android:textColor="#AAAAAA"
+            android:textSize="10sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Giriş Kaynağı Seçimi -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GİRİŞ KAYNAĞI"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <Spinner
+            android:id="@+id/spinnerSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="+905xxxxxxxxx"
+            android:inputType="phone"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#777777"
+            android:textSize="11sp" />
+
+        <Button
+            android:id="@+id/btnVerify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NUMARAYI DOĞRULA"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/txtAuthStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NUMARA DOĞRULANMADI"
+            android:textColor="#AAAAAA"
+            android:textSize="9sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- ─── Risk Göstergesi ────────────────────────── -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RISK SKORU"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <ProgressBar
+            android:id="@+id/riskBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:max="100"
+            android:progress="0"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp" />
+
+        <TextView
+            android:id="@+id/txtRiskScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0/100"
+            android:textColor="@color/accent_cyan"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            tools:text="65/100" />
+
+        <!-- Davranış Sınıfı -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SURUCU DAVRANISI"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtBehavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="normal_surus"
+            android:textColor="@color/color_risk_low"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
+            tools:text="telefon_kullanimi" />
+
+        <!-- Plaka -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TESPiT EDiLEN PLAKA"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtPlate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="12dp"
+            tools:text="34 TC 8532" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ARAÇ TİPİ / RENK"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OLAY ZAMANI"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtEventTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Hız -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HIZ TAHMiNi"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            tools:text="72 km/s" />
+
+        <!-- 5G QoD Durum -->
+        <TextView
+            android:id="@+id/qodIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5G BEST EFFORT"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:background="@color/panel_section"
+            android:padding="6dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/txtConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TELEMETRİ: BAĞLI DEĞİL"
+            android:textColor="#AAAAAA"
+            android:textSize="9sp"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/txtInference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ÇIKARIM: MODEL KONTROL EDİLİYOR"
+            android:textColor="#AAAAAA"
+            android:textSize="9sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Yerel Risk (edge) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDGE (YEREL)"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.2" />
+
+        <TextView
+            android:id="@+id/txtLocalRisk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="—"
+            android:textColor="@color/accent_cyan"
+            android:textSize="13sp"
+            android:layout_marginBottom="8dp"
+            tools:text="42/100" />
+
+        <!-- İstatistikler -->
+        <TextView
+            android:id="@+id/txtStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kare: 0 | Tespit: 0"
+            android:textColor="#666666"
+            android:textSize="9sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Durdur Butonu -->
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DURDUR"
+            android:textColor="@color/bg_dark"
+            android:backgroundTint="@color/color_risk_critical"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

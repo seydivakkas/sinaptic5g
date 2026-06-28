@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinaptic5G — Veri Seti Metodolojisi Dashboard</title>
+    <meta name="description" content="Sinaptic5G projesinin veri seti işleme, kalite kontrol ve augmentation metodolojisini irdeleyen interaktif veri görselleştirme paneli">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2235;
+            --bg-card-hover: #1f2942;
+            --border: #2a3654;
+            --text-primary: #f0f4fc;
+            --text-secondary: #8b99b5;
+            --text-muted: #5a6b8a;
+            --accent-cyan: #06d6a0;
+            --accent-blue: #4cc9f0;
+            --accent-purple: #7b61ff;
+            --accent-orange: #ff8a5c;
+            --accent-red: #ef476f;
+            --accent-yellow: #ffd166;
+            --accent-green: #06d6a0;
+            --accent-pink: #f72585;
+            --gradient-1: linear-gradient(135deg, #06d6a0 0%, #4cc9f0 100%);
+            --gradient-2: linear-gradient(135deg, #7b61ff 0%, #f72585 100%);
+            --glass: rgba(26, 34, 53, 0.7);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px rgba(6, 214, 160, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary); color: var(--text-primary);
+            min-height: 100vh; overflow-x: hidden;
+        }
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(6, 214, 160, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(123, 97, 255, 0.04) 0%, transparent 50%);
+        }
+        .bg-grid::after {
+            content: ''; position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(42, 54, 84, 0.15) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(42, 54, 84, 0.15) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .header {
+            position: relative; z-index: 10;
+            background: linear-gradient(180deg, rgba(10, 14, 23, 0.95) 0%, transparent 100%);
+            padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border);
+        }
+        .header-inner { max-width: 1600px; margin: 0 auto; }
+        .header h1 {
+            font-size: 2.2rem; font-weight: 800;
+            background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+        .header p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.4rem; max-width: 700px; }
+        .badge-row { display: flex; gap: 0.6rem; margin-top: 0.8rem; flex-wrap: wrap; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            padding: 0.3rem 0.75rem; border-radius: 999px;
+            font-size: 0.75rem; font-weight: 600; border: 1px solid; backdrop-filter: blur(12px);
+        }
+        .badge.cyan { background: rgba(6,214,160,0.12); border-color: rgba(6,214,160,0.3); color: var(--accent-cyan); }
+        .badge.purple { background: rgba(123,97,255,0.12); border-color: rgba(123,97,255,0.3); color: var(--accent-purple); }
+        .badge.orange { background: rgba(255,138,92,0.12); border-color: rgba(255,138,92,0.3); color: var(--accent-orange); }
+        .badge.red { background: rgba(239,71,111,0.12); border-color: rgba(239,71,111,0.3); color: var(--accent-red); }
+
+        .stats-strip {
+            position: relative; z-index: 10; max-width: 1600px; margin: -1rem auto 0; padding: 0 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;
+        }
+        .stat-card {
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 16px; padding: 1.2rem 1.4rem;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover { border-color: rgba(6,214,160,0.4); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
+        .stat-card .label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+        .stat-card .value { font-size: 1.8rem; font-weight: 800; margin-top: 0.3rem; font-family: 'JetBrains Mono', monospace; }
+        .stat-card .sub { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem; }
+        .value.cyan { color: var(--accent-cyan); }
+        .value.blue { color: var(--accent-blue); }
+        .value.purple { color: var(--accent-purple); }
+        .value.orange { color: var(--accent-orange); }
+        .value.green { color: var(--accent-green); }
+
+        .main { position: relative; z-index: 10; max-width: 1600px; margin: 2rem auto; padding: 0 2rem; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .grid-full { margin-bottom: 1.5rem; }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 1.6rem; position: relative; overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .card:hover { border-color: rgba(76,201,240,0.3); box-shadow: var(--shadow); }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--gradient-1); opacity: 0; transition: opacity 0.3s;
+        }
+        .card:hover::before { opacity: 1; }
+        .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-subtitle { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+
+        .chart-wrap { position: relative; width: 100%; }
+        .chart-wrap.h300 { height: 300px; }
+        .chart-wrap.h350 { height: 350px; }
+        .chart-wrap.h400 { height: 400px; }
+
+        .section-title {
+            font-size: 1.4rem; font-weight: 800; margin: 2.5rem 0 1rem;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .section-title .line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+        .pipeline {
+            display: flex; align-items: stretch; gap: 0; overflow-x: auto;
+            padding: 1rem 0; margin-bottom: 1.5rem;
+        }
+        .pipe-step {
+            flex: 1; min-width: 150px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 1.1rem; text-align: center; position: relative; transition: all 0.3s;
+        }
+        .pipe-step:first-child { border-radius: 16px 0 0 16px; }
+        .pipe-step:last-child { border-radius: 0 16px 16px 0; }
+        .pipe-step:hover { background: var(--bg-card-hover); border-color: rgba(6,214,160,0.4); z-index: 2; }
+        .pipe-step .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .pipe-step .name { font-size: 0.8rem; font-weight: 700; }
+        .pipe-step .desc { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.4; }
+        .pipe-step .tools { margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.25rem; justify-content: center; }
+        .pipe-step .tool-tag {
+            font-size: 0.58rem; padding: 0.12rem 0.35rem; border-radius: 4px;
+            background: rgba(76,201,240,0.1); color: var(--accent-blue); font-family: 'JetBrains Mono', monospace;
+        }
+        .pipe-arrow { display: flex; align-items: center; color: var(--accent-cyan); font-size: 1.3rem; padding: 0 0.1rem; flex-shrink: 0; }
+
+        .source-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .source-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1rem; transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .source-card:hover { border-color: rgba(123,97,255,0.4); transform: translateY(-3px); box-shadow: var(--shadow); }
+        .source-card .src-name { font-size: 0.82rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .source-card .src-meta { font-size: 0.7rem; color: var(--text-muted); }
+        .source-card .src-classes { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
+        .class-tag {
+            font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 5px;
+            font-weight: 600; font-family: 'JetBrains Mono', monospace;
+        }
+        .class-tag.c0 { background: rgba(239,71,111,0.15); color: #ef476f; }
+        .class-tag.c1 { background: rgba(76,201,240,0.15); color: #4cc9f0; }
+        .class-tag.c2 { background: rgba(255,209,102,0.15); color: #ffd166; }
+        .class-tag.c3 { background: rgba(6,214,160,0.15); color: #06d6a0; }
+        .class-tag.c4 { background: rgba(255,138,92,0.15); color: #ff8a5c; }
+        .class-tag.c5 { background: rgba(247,37,133,0.15); color: #f72585; }
+        .class-tag.c6 { background: rgba(123,97,255,0.15); color: #7b61ff; }
+        .class-tag.c7 { background: rgba(72,202,228,0.15); color: #48cae4; }
+        .class-tag.c8 { background: rgba(173,181,189,0.15); color: #adb5bd; }
+        .license-badge {
+            position: absolute; top: 0.6rem; right: 0.6rem;
+            font-size: 0.56rem; padding: 0.12rem 0.45rem; border-radius: 4px; font-weight: 700;
+        }
+        .license-badge.cc { background: rgba(6,214,160,0.15); color: var(--accent-green); }
+        .license-badge.custom { background: rgba(255,209,102,0.15); color: var(--accent-yellow); }
+        .license-badge.academic { background: rgba(123,97,255,0.15); color: var(--accent-purple); }
+
+        .quality-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.8rem; }
+        .quality-item {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1rem; text-align: center; transition: all 0.3s;
+        }
+        .quality-item:hover { transform: scale(1.03); border-color: rgba(6,214,160,0.4); }
+        .quality-item .q-score { font-size: 1.8rem; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+        .quality-item .q-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem; font-weight: 600; }
+        .q-good { color: var(--accent-green); }
+        .q-mid { color: var(--accent-yellow); }
+        .q-low { color: var(--accent-red); }
+
+        .footer {
+            text-align: center; padding: 2rem; color: var(--text-muted);
+            font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 3rem;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .pipeline { flex-wrap: wrap; }
+            .pipe-step { min-width: 130px; border-radius: 12px !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <header class="header">
+        <div class="header-inner">
+            <h1>Sinaptic5G — Veri Seti Metodolojisi</h1>
+            <p>Projenin veri toplama, etiketleme, artirma, kalite kontrol ve model egitim sureclerini irdeleyen kapsamli gorsellestime paneli.</p>
+            <div class="badge-row">
+                <span class="badge cyan">12 Aktif Kaynak</span>
+                <span class="badge purple">9 Kanonik Sinif</span>
+                <span class="badge orange">15.287 Goruntu</span>
+                <span class="badge red">640x640px</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="stats-strip">
+        <div class="stat-card"><div class="label">Toplam Goruntu</div><div class="value cyan" id="animTotal">0</div><div class="sub">Train + Val + Test</div></div>
+        <div class="stat-card"><div class="label">Toplam Annotasyon</div><div class="value blue" id="animAnnot">0</div><div class="sub">Bounding box etiketleri</div></div>
+        <div class="stat-card"><div class="label">Model Versiyonu</div><div class="value purple">v5</div><div class="sub">YOLOv8m — 60 epoch</div></div>
+        <div class="stat-card"><div class="label">mAP@0.50</div><div class="value green">0.947</div><div class="sub">Test split — en iyi</div></div>
+        <div class="stat-card"><div class="label">Sizinti Kontrolu</div><div class="value cyan">GECTi</div><div class="sub">Group-aware split</div></div>
+        <div class="stat-card"><div class="label">Augmentation</div><div class="value orange">5 Yontem</div><div class="sub">CopyPaste + Mosaic + ...</div></div>
+    </div>
+
+    <main class="main">
+        <h2 class="section-title fade-in"><span>Veri Isleme Pipeline</span><span class="line"></span></h2>
+        <div class="pipeline fade-in">
+            <div class="pipe-step"><div class="icon">&#128229;</div><div class="name">Ham Veri Toplama</div><div class="desc">12 kaynak, 6 lisans kategorisi</div><div class="tools"><span class="tool-tag">Roboflow</span><span class="tool-tag">Kaggle</span><span class="tool-tag">DriveAct</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#127991;</div><div class="name">Etiket Esleme</div><div class="desc">label_map ile 9 kanonik sinifa donusum</div><div class="tools"><span class="tool-tag">datasets.yaml</span><span class="tool-tag">build_corpus</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#128269;</div><div class="name">Kalite Denetimi</div><div class="desc">Bbox, format, sizinti, IoU kontrolu</div><div class="tools"><span class="tool-tag">audit_labels</span><span class="tool-tag">leakage_check</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#9986;</div><div class="name">Group-Aware Split</div><div class="desc">video_id, session, vehicle, person bazli</div><div class="tools"><span class="tool-tag">prepare_v5</span><span class="tool-tag">70/15/15</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#127912;</div><div class="name">Augmentation</div><div class="desc">Copy-Paste, Mosaic, MixUp, Albumentations</div><div class="tools"><span class="tool-tag">CopyPaste</span><span class="tool-tag">MixUp</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#127947;</div><div class="name">Model Egitimi</div><div class="desc">YOLOv8m, 60 epoch, AdamW, AMP</div><div class="tools"><span class="tool-tag">RTX 4070</span><span class="tool-tag">Freeze 10</span></div></div>
+            <div class="pipe-arrow">&#8594;</div>
+            <div class="pipe-step"><div class="icon">&#128200;</div><div class="name">Degerlendirme</div><div class="desc">Threshold kalibrasyon, esik optimizasyonu</div><div class="tools"><span class="tool-tag">mAP@0.50</span><span class="tool-tag">F1</span></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Veri Kaynaklari ve Lisans Haritasi</span><span class="line"></span></h2>
+        <div class="source-grid fade-in">
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">detect_laptop</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c7">bilgisayar</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">soft_toy</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c6">teknocan</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">mobile_seatbelt</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c0">telefonla_konusma</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">driver_distraction_v3</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c0">tel</span><span class="class-tag c1">su</span><span class="class-tag c2">bakma</span><span class="class-tag c3">esneme</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">driver_drowsiness_v4</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c3">esneme</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">cigarette_smokers_v5</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c4">sigara_icme</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">detect_seatbelt_v7</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c5">emniyet_kemeri</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC0-1.0</span><div class="src-name">turkish_license_plate</div><div class="src-meta">Kaggle — yolo-flat</div><div class="src-classes"><span class="class-tag c8">license_plate</span></div></div>
+            <div class="source-card"><span class="license-badge academic">AKADEMIK</span><div class="src-name">drive_and_act</div><div class="src-meta">ICCV — temporal-classification</div><div class="src-classes"><span class="class-tag c3">temporal</span></div></div>
+            <div class="source-card"><span class="license-badge custom">OZEL</span><div class="src-name">teknocan_local</div><div class="src-meta">Lokal — Detection</div><div class="src-classes"><span class="class-tag c6">teknocan</span></div></div>
+            <div class="source-card"><span class="license-badge custom">SENTETIK</span><div class="src-name">laptop_incar</div><div class="src-meta">Sentetik Uretim — yolo-flat</div><div class="src-classes"><span class="class-tag c7">bilgisayar</span></div></div>
+            <div class="source-card"><span class="license-badge cc">CC-BY-4.0</span><div class="src-name">seatbelt_v1</div><div class="src-meta">Roboflow — Detection</div><div class="src-classes"><span class="class-tag c5">emniyet_kemeri</span></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Sinif Dagilimi ve Dengesizlik Analizi</span><span class="line"></span></h2>
+        <div class="grid-2 fade-in">
+            <div class="card"><div class="card-title">Sinif Bazli Annotasyon Dagilimi (v5)</div><div class="card-subtitle">Train / Val / Test split bazinda instance sayilari</div><div class="chart-wrap h400"><canvas id="chartClassDist"></canvas></div></div>
+            <div class="card"><div class="card-title">Sinif Oransal Dagilim</div><div class="card-subtitle">Toplam 19.407 annotasyonun siniflara gore dagilimi</div><div class="chart-wrap h400"><canvas id="chartClassPie"></canvas></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Copy-Paste Augmentation: Oncesi vs Sonrasi</span><span class="line"></span></h2>
+        <div class="grid-2 fade-in">
+            <div class="card"><div class="card-title">v4 - v5 Egitim Destegi Degisimi</div><div class="card-subtitle">Copy-Paste + yeni kaynak entegrasyonu sonrasi artis</div><div class="chart-wrap h350"><canvas id="chartBeforeAfter"></canvas></div></div>
+            <div class="card"><div class="card-title">Artis Oranlari (%)</div><div class="card-subtitle">En dusuk destekli siniflardaki dramatik buyume</div><div class="chart-wrap h350"><canvas id="chartGrowth"></canvas></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Model Performans Metrikleri</span><span class="line"></span></h2>
+        <div class="grid-2 fade-in">
+            <div class="card"><div class="card-title">Sinif Bazli AP@0.50 (Test)</div><div class="card-subtitle">detector_v5 — 9 sinifin Average Precision degerleri</div><div class="chart-wrap h400"><canvas id="chartAP50"></canvas></div></div>
+            <div class="card"><div class="card-title">Precision vs Recall (Test)</div><div class="card-subtitle">Her sinif icin Precision ve Recall karsilastirmasi</div><div class="chart-wrap h400"><canvas id="chartPrecRecall"></canvas></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Model Versiyon Evrimi (v2 - v5)</span><span class="line"></span></h2>
+        <div class="grid-2 fade-in">
+            <div class="card"><div class="card-title">Kuresel mAP@0.50 Evrimi</div><div class="card-subtitle">4 model versiyonu boyunca global metrik degisimi</div><div class="chart-wrap h350"><canvas id="chartVersionMAP"></canvas></div></div>
+            <div class="card"><div class="card-title">Veri Seti Buyukluk Evrimi</div><div class="card-subtitle">Her versiyonda toplam goruntu sayisi</div><div class="chart-wrap h350"><canvas id="chartVersionSize"></canvas></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Veri Kalitesi Matrisi</span><span class="line"></span></h2>
+        <div class="quality-grid fade-in">
+            <div class="quality-item"><div class="q-score q-good">&#10003;</div><div class="q-label">Sizinti Kontrolu</div></div>
+            <div class="quality-item"><div class="q-score q-good">&#10003;</div><div class="q-label">Bbox Format</div></div>
+            <div class="quality-item"><div class="q-score q-good">9/9</div><div class="q-label">Sinif Tutarliligi</div></div>
+            <div class="quality-item"><div class="q-score q-mid">72/15/9</div><div class="q-label">Split Oranlari</div></div>
+            <div class="quality-item"><div class="q-score q-good">SHA-256</div><div class="q-label">Model Hash Kilidi</div></div>
+            <div class="quality-item"><div class="q-score q-good">12/12</div><div class="q-label">Lisans Kaniti</div></div>
+            <div class="quality-item"><div class="q-score q-low">N=36</div><div class="q-label">Teknocan Test</div></div>
+            <div class="quality-item"><div class="q-score q-low">N=26</div><div class="q-label">Bilgisayar Test</div></div>
+            <div class="quality-item"><div class="q-score q-good">Olculdu</div><div class="q-label">Threshold Kalib.</div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Split Dagilimi Detayi</span><span class="line"></span></h2>
+        <div class="grid-3 fade-in">
+            <div class="card"><div class="card-title">Goruntu Split Orani</div><div class="card-subtitle">Hedef: 70/15/15 — Gerceklesen</div><div class="chart-wrap h300"><canvas id="chartSplitImages"></canvas></div></div>
+            <div class="card"><div class="card-title">Annotasyon Split Orani</div><div class="card-subtitle">Instance dagilimi split bazinda</div><div class="chart-wrap h300"><canvas id="chartSplitAnnot"></canvas></div></div>
+            <div class="card"><div class="card-title">Augmentation Ayarlari</div><div class="card-subtitle">YOLOv8 dahili augmentation parametreleri</div><div class="chart-wrap h300"><canvas id="chartAugParams"></canvas></div></div>
+        </div>
+
+        <h2 class="section-title fade-in"><span>Sinif Bazli Guven Esigi Kalibrasyonu</span><span class="line"></span></h2>
+        <div class="grid-full fade-in">
+            <div class="card"><div class="card-title">Kalibre Edilmis Guven Esikleri</div><div class="card-subtitle">Her sinif icin F1 skorunu maksimize eden optimal esik degerleri</div><div class="chart-wrap h350"><canvas id="chartThresholds"></canvas></div></div>
+        </div>
+    </main>
+
+    <footer class="footer">OZEL LISANS — TUM HAKLAR SAKLIDIR | Telif Hakki 2026 Seydi Eryilmaz (@seydivakkas)</footer>
+
+    <script>
+        Chart.register(ChartDataLabels);
+        Chart.defaults.color = '#8b99b5';
+        Chart.defaults.borderColor = 'rgba(42, 54, 84, 0.5)';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.plugins.legend.labels.usePointStyle = true;
+        Chart.defaults.plugins.legend.labels.padding = 16;
+        Chart.defaults.animation.duration = 1200;
+        Chart.defaults.animation.easing = 'easeOutQuart';
+
+        const CN = ['telefonla_konusma','su_icme','arkaya_bakma','esneme','sigara_icme','emniyet_kemeri','teknocan','bilgisayar','license_plate'];
+        const CC = ['#ef476f','#4cc9f0','#ffd166','#06d6a0','#ff8a5c','#f72585','#7b61ff','#48cae4','#adb5bd'];
+        const tI = [1907,773,785,762,5968,1260,723,662,1596];
+        const vI = [500,201,202,197,1536,186,58,50,402];
+        const tsI = [250,100,101,102,758,93,36,26,219];
+        const totI = tI.map((v,i)=>v+vI[i]+tsI[i]);
+        const v4T = [1750,702,709,705,5446,654,90,335,1440];
+        const ap50 = [0.9914,0.9950,0.9950,0.9923,0.8575,0.8596,0.8973,0.9531,0.9841];
+        const prec = [0.9886,0.9883,0.9868,0.9440,0.9132,0.9193,0.8265,0.9237,0.9505];
+        const rec = [0.9760,1.0000,1.0000,0.9902,0.7631,0.8280,0.9167,0.9615,0.9644];
+        const vers = ['v2','v3','v4_smoke','v5'];
+        const vMAP = [0.4606,0.9164,0.8676,0.9473];
+        const vSz = [13401,13700,14200,15287];
+        const cTh = [0.30,0.40,0.25,0.25,0.45,0.30,0.35,0.30,0.40];
+
+        function animN(el,target,dur=1500){const s=performance.now();function u(n){const t=Math.min((n-s)/dur,1);const e=1-Math.pow(1-t,3);el.textContent=Math.floor(target*e).toLocaleString('tr-TR');if(t<1)requestAnimationFrame(u);}requestAnimationFrame(u);}
+        animN(document.getElementById('animTotal'),15287);
+        animN(document.getElementById('animAnnot'),19407);
+
+        new Chart(document.getElementById('chartClassDist'),{type:'bar',data:{labels:CN,datasets:[{label:'Train',data:tI,backgroundColor:'rgba(6,214,160,0.7)',borderColor:'#06d6a0',borderWidth:1,borderRadius:4},{label:'Val',data:vI,backgroundColor:'rgba(76,201,240,0.7)',borderColor:'#4cc9f0',borderWidth:1,borderRadius:4},{label:'Test',data:tsI,backgroundColor:'rgba(123,97,255,0.7)',borderColor:'#7b61ff',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{stacked:true,grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'Instance Sayisi',font:{size:11}}}}}});
+
+        new Chart(document.getElementById('chartClassPie'),{type:'doughnut',data:{labels:CN,datasets:[{data:totI,backgroundColor:CC,borderColor:'#1a2235',borderWidth:2,hoverOffset:12}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{datalabels:{color:'#f0f4fc',font:{size:10,weight:600,family:"'JetBrains Mono'"},formatter:(v)=>{const p=(v/totI.reduce((a,b)=>a+b,0)*100).toFixed(1);return p>4?p+'%':'';}},legend:{position:'right',labels:{font:{size:10},padding:10}}}}});
+
+        new Chart(document.getElementById('chartBeforeAfter'),{type:'bar',data:{labels:CN,datasets:[{label:'v4 Train',data:v4T,backgroundColor:'rgba(255,138,92,0.5)',borderColor:'#ff8a5c',borderWidth:1,borderRadius:4},{label:'v5 Train',data:tI,backgroundColor:'rgba(6,214,160,0.7)',borderColor:'#06d6a0',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{display:false},tooltip:{mode:'index',intersect:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'Train Instance',font:{size:11}}}}}});
+
+        const gD=CN.map((n,i)=>v4T[i]>0?((tI[i]-v4T[i])/v4T[i]*100):0);
+        new Chart(document.getElementById('chartGrowth'),{type:'bar',data:{labels:CN,datasets:[{label:'Artis %',data:gD,backgroundColor:gD.map(v=>v>100?'rgba(123,97,255,0.8)':v>30?'rgba(6,214,160,0.7)':'rgba(76,201,240,0.5)'),borderRadius:6,borderWidth:0}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{datalabels:{anchor:'end',align:'end',color:'#f0f4fc',font:{size:10,weight:700,family:"'JetBrains Mono'"},formatter:v=>v>0?'+'+v.toFixed(0)+'%':'0%'},legend:{display:false}},scales:{x:{grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'Artis Orani (%)',font:{size:11}}},y:{grid:{display:false},ticks:{font:{size:9}}}}}});
+
+        new Chart(document.getElementById('chartAP50'),{type:'bar',data:{labels:CN,datasets:[{label:'AP@0.50',data:ap50,backgroundColor:ap50.map(v=>v>=0.95?'rgba(6,214,160,0.8)':v>=0.88?'rgba(76,201,240,0.7)':'rgba(255,209,102,0.7)'),borderRadius:6,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{anchor:'end',align:'end',color:'#f0f4fc',font:{size:10,weight:700,family:"'JetBrains Mono'"},formatter:v=>v.toFixed(3)},legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{min:0.7,max:1.05,grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'AP@0.50',font:{size:11}}}}}});
+
+        new Chart(document.getElementById('chartPrecRecall'),{type:'radar',data:{labels:CN,datasets:[{label:'Precision',data:prec,borderColor:'#06d6a0',backgroundColor:'rgba(6,214,160,0.15)',pointBackgroundColor:'#06d6a0',pointRadius:4,borderWidth:2},{label:'Recall',data:rec,borderColor:'#f72585',backgroundColor:'rgba(247,37,133,0.1)',pointBackgroundColor:'#f72585',pointRadius:4,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{display:false}},scales:{r:{min:0.6,max:1.05,grid:{color:'rgba(42,54,84,0.4)'},pointLabels:{font:{size:9}},ticks:{stepSize:0.1,font:{size:8},backdropColor:'transparent'}}}}});
+
+        new Chart(document.getElementById('chartVersionMAP'),{type:'line',data:{labels:vers,datasets:[{label:'mAP@0.50',data:vMAP,borderColor:'#06d6a0',backgroundColor:'rgba(6,214,160,0.1)',pointBackgroundColor:vMAP.map((v,i)=>i===3?'#06d6a0':'#4cc9f0'),pointRadius:vMAP.map((v,i)=>i===3?8:5),pointBorderWidth:2,borderWidth:3,fill:true,tension:0.3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{anchor:'end',align:'top',color:'#f0f4fc',font:{size:12,weight:700,family:"'JetBrains Mono'"},formatter:v=>v.toFixed(4)},legend:{display:false}},scales:{x:{grid:{display:false}},y:{min:0.2,max:1.05,grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'mAP@0.50',font:{size:11}}}}}});
+
+        new Chart(document.getElementById('chartVersionSize'),{type:'bar',data:{labels:vers,datasets:[{label:'Toplam Goruntu',data:vSz,backgroundColor:['rgba(255,138,92,0.6)','rgba(76,201,240,0.6)','rgba(123,97,255,0.6)','rgba(6,214,160,0.8)'],borderRadius:8,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{anchor:'end',align:'end',color:'#f0f4fc',font:{size:12,weight:700,family:"'JetBrains Mono'"},formatter:v=>v.toLocaleString('tr-TR')},legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'Goruntu Sayisi',font:{size:11}}}}}});
+
+        new Chart(document.getElementById('chartSplitImages'),{type:'doughnut',data:{labels:['Train (72.1%)','Val (18.7%)','Test (9.2%)'],datasets:[{data:[10998,2855,1434],backgroundColor:['rgba(6,214,160,0.8)','rgba(76,201,240,0.8)','rgba(123,97,255,0.8)'],borderColor:'#1a2235',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{datalabels:{color:'#f0f4fc',font:{size:11,weight:700,family:"'JetBrains Mono'"},formatter:v=>v.toLocaleString('tr-TR')},legend:{position:'bottom',labels:{font:{size:10}}}}}});
+
+        const ttI=tI.reduce((a,b)=>a+b,0),tvI=vI.reduce((a,b)=>a+b,0),ttsI=tsI.reduce((a,b)=>a+b,0);
+        new Chart(document.getElementById('chartSplitAnnot'),{type:'doughnut',data:{labels:['Train ('+((ttI/(ttI+tvI+ttsI))*100).toFixed(1)+'%)','Val ('+((tvI/(ttI+tvI+ttsI))*100).toFixed(1)+'%)','Test ('+((ttsI/(ttI+tvI+ttsI))*100).toFixed(1)+'%)'],datasets:[{data:[ttI,tvI,ttsI],backgroundColor:['rgba(255,138,92,0.8)','rgba(255,209,102,0.8)','rgba(247,37,133,0.8)'],borderColor:'#1a2235',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{datalabels:{color:'#f0f4fc',font:{size:11,weight:700,family:"'JetBrains Mono'"},formatter:v=>v.toLocaleString('tr-TR')},legend:{position:'bottom',labels:{font:{size:10}}}}}});
+
+        new Chart(document.getElementById('chartAugParams'),{type:'polarArea',data:{labels:['Mosaic','HSV-S','Scale','Flip-LR','MixUp','CopyPaste','HSV-V','Rotate/90'],datasets:[{data:[1.0,0.7,0.5,0.5,0.15,0.15,0.4,0.11],backgroundColor:['rgba(6,214,160,0.7)','rgba(76,201,240,0.6)','rgba(123,97,255,0.6)','rgba(247,37,133,0.6)','rgba(255,138,92,0.6)','rgba(255,209,102,0.6)','rgba(72,202,228,0.6)','rgba(173,181,189,0.6)'],borderWidth:1,borderColor:'#2a3654'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{display:false},legend:{position:'right',labels:{font:{size:9},padding:8}}},scales:{r:{grid:{color:'rgba(42,54,84,0.4)'},ticks:{font:{size:8},backdropColor:'transparent'}}}}});
+
+        new Chart(document.getElementById('chartThresholds'),{type:'bar',data:{labels:CN,datasets:[{label:'Kalibre Esik',data:cTh,backgroundColor:cTh.map(v=>v<=0.25?'rgba(247,37,133,0.7)':v<=0.35?'rgba(255,209,102,0.7)':'rgba(6,214,160,0.7)'),borderRadius:6,borderWidth:0},{label:'Varsayilan (0.35)',data:Array(9).fill(0.35),type:'line',borderColor:'rgba(255,255,255,0.3)',borderDash:[6,4],pointRadius:0,borderWidth:2,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{datalabels:{anchor:'end',align:'end',color:'#f0f4fc',font:{size:11,weight:700,family:"'JetBrains Mono'"},formatter:(v,ctx)=>ctx.datasetIndex===0?v.toFixed(2):''}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45}},y:{min:0,max:0.6,grid:{color:'rgba(42,54,84,0.3)'},title:{display:true,text:'Guven Esigi',font:{size:11}}}}}});
+
+        const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.1});
+        document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+    </script>
+</body>
+</html>

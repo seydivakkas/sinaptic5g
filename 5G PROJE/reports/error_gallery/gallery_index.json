@@ -1,0 +1,547 @@
+{
+  "stats": {
+    "reviewed": 150,
+    "fp": 43,
+    "fn": 59,
+    "low_conf_tp": 42,
+    "high_conf_tp": 86,
+    "class_fp": {
+      "esneme": 8,
+      "sigara_icme": 26,
+      "arkaya_bakma": 1,
+      "su_icme": 3,
+      "emniyet_kemeri_ihlali": 2,
+      "license_plate": 1,
+      "telefonla_konusma": 2
+    },
+    "class_fn": {
+      "telefonla_konusma": 23,
+      "emniyet_kemeri_ihlali": 2,
+      "sigara_icme": 27,
+      "esneme": 4,
+      "bilgisayar": 2,
+      "teknocan": 1
+    },
+    "reason_tags": {}
+  },
+  "gallery": {
+    "false_positive": [
+      {
+        "file": "fp_detect_seatbelt_v7__5379533482c4_0.jpg",
+        "pred_class": "esneme",
+        "conf": 0.344,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__ed89708043e9_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.361,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__dada63978374_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.675,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__dada63978374_2.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.415,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__dada63978374_3.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.262,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__52ccbf288501_4.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.546,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__adfa53c11811_0.jpg",
+        "pred_class": "arkaya_bakma",
+        "conf": 0.251,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__1a897792866e_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.449,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__09301ccc1ce7_4.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.296,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__572fff1046f0_0.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.399,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__596c39f19863_0.jpg",
+        "pred_class": "su_icme",
+        "conf": 0.496,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__4519f0edff56_0.jpg",
+        "pred_class": "esneme",
+        "conf": 0.39,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__77a6867a887c_0.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.614,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__49aeb1518947_2.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.265,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_mobile_seatbelt__95f4dbf41c4b_0.jpg",
+        "pred_class": "su_icme",
+        "conf": 0.834,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__2d061c70e62c_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.579,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__df8d0b5b7097_0.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.502,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__025320284bb3_0.jpg",
+        "pred_class": "esneme",
+        "conf": 0.534,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__025320284bb3_1.jpg",
+        "pred_class": "emniyet_kemeri_ihlali",
+        "conf": 0.263,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__97ab01c1efdd_0.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.831,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_mobile_seatbelt__ec723a98a9bd_0.jpg",
+        "pred_class": "emniyet_kemeri_ihlali",
+        "conf": 0.671,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__42db03f47007_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.375,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__42db03f47007_2.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.27,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_mobile_seatbelt__ac5f29ae9cd3_0.jpg",
+        "pred_class": "esneme",
+        "conf": 0.528,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__988e5220c9d5_1.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.333,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__988e5220c9d5_2.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.261,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_mobile_seatbelt__c717884f3084_0.jpg",
+        "pred_class": "esneme",
+        "conf": 0.57,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_kaggle_turkish_license_plate_2776891__8b96f6d806e2_1.jpg",
+        "pred_class": "license_plate",
+        "conf": 0.534,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_driver_distraction_v3__29d6b4b959e9_1.jpg",
+        "pred_class": "telefonla_konusma",
+        "conf": 0.259,
+        "reason": "spurious_detection"
+      },
+      {
+        "file": "fp_cigarette_smokers_v5__365bed9344db_0.jpg",
+        "pred_class": "sigara_icme",
+        "conf": 0.568,
+        "reason": "spurious_detection"
+      }
+    ],
+    "false_negative": [
+      {
+        "file": "fn_mobile_seatbelt__c0e30b570e37_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_detect_seatbelt_v7__5379533482c4_0.jpg",
+        "gt_class": "emniyet_kemeri_ihlali",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_detect_seatbelt_v7__5379533482c4_1.jpg",
+        "gt_class": "emniyet_kemeri_ihlali",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__dada63978374_1.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__dada63978374_2.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__8352ab6c15fe_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__52ccbf288501_3.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_driver_distraction_v3__adfa53c11811_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__1db07e7b4774_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__e55d9bd647e0_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_driver_drowsiness_v4__fca6514a373c_0.jpg",
+        "gt_class": "esneme",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_mobile_seatbelt__038bf09eaa59_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__c2f1af04c641_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_mobile_seatbelt__f67a10117af5_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__09301ccc1ce7_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__963c5d8786cb_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__939f7eaa1a0e_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__939f7eaa1a0e_1.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__572fff1046f0_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_driver_distraction_v3__596c39f19863_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_driver_distraction_v3__4519f0edff56_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_mobile_seatbelt__06b7c297c006_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_driver_distraction_v3__f0280262d1da_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__77a6867a887c_0.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__49aeb1518947_2.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__49aeb1518947_3.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_mobile_seatbelt__95f4dbf41c4b_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_mobile_seatbelt__5c572efc5c34_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "no_detections"
+      },
+      {
+        "file": "fn_cigarette_smokers_v5__2d061c70e62c_1.jpg",
+        "gt_class": "sigara_icme",
+        "reason": "missed_detection"
+      },
+      {
+        "file": "fn_driver_distraction_v3__025320284bb3_0.jpg",
+        "gt_class": "telefonla_konusma",
+        "reason": "missed_detection"
+      }
+    ],
+    "low_confidence_correct": [
+      {
+        "file": "low__cigarette_smokers_v5__6d484f389c79_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.641,
+        "iou": 0.931
+      },
+      {
+        "file": "low__cigarette_smokers_v5__ed89708043e9_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.511,
+        "iou": 0.793
+      },
+      {
+        "file": "low__cigarette_smokers_v5__52ccbf288501_1.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.603,
+        "iou": 0.64
+      },
+      {
+        "file": "low__cigarette_smokers_v5__52ccbf288501_4.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.309,
+        "iou": 0.65
+      },
+      {
+        "file": "low__cigarette_smokers_v5__e55d9bd647e0_1.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.282,
+        "iou": 0.805
+      },
+      {
+        "file": "low__cigarette_smokers_v5__1a897792866e_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.648,
+        "iou": 0.771
+      },
+      {
+        "file": "low__cigarette_smokers_v5__d90f4b5cdd0c_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.646,
+        "iou": 0.953
+      },
+      {
+        "file": "low__detect_seatbelt_v7__5cfc621eb8ed_0.jpg",
+        "gt_class": "emniyet_kemeri_ihlali",
+        "conf": 0.509,
+        "iou": 0.589
+      },
+      {
+        "file": "low__cigarette_smokers_v5__09301ccc1ce7_2.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.481,
+        "iou": 0.698
+      },
+      {
+        "file": "low__driver_distraction_v3__b1271df9c82e_0.jpg",
+        "gt_class": "esneme",
+        "conf": 0.593,
+        "iou": 0.909
+      },
+      {
+        "file": "low__driver_distraction_v3__40557aee05a4_0.jpg",
+        "gt_class": "esneme",
+        "conf": 0.44,
+        "iou": 0.825
+      },
+      {
+        "file": "low__cigarette_smokers_v5__939f7eaa1a0e_2.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.572,
+        "iou": 0.727
+      },
+      {
+        "file": "low__cigarette_smokers_v5__d5681162f7ca_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.529,
+        "iou": 0.786
+      },
+      {
+        "file": "low__cigarette_smokers_v5__2a2cc053929d_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.637,
+        "iou": 0.902
+      },
+      {
+        "file": "low__cigarette_smokers_v5__49aeb1518947_1.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.297,
+        "iou": 0.576
+      }
+    ],
+    "high_confidence_correct": [
+      {
+        "file": "high_cigarette_smokers_v5__1913a55d8f58_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.864,
+        "iou": 0.914
+      },
+      {
+        "file": "high_cigarette_smokers_v5__dada63978374_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.909,
+        "iou": 0.923
+      },
+      {
+        "file": "high_cigarette_smokers_v5__61cf603f2cd4_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.859,
+        "iou": 0.921
+      },
+      {
+        "file": "high_kaggle_turkish_license_plate_2776891__6d5ffec2373b_0.jpg",
+        "gt_class": "license_plate",
+        "conf": 0.933,
+        "iou": 0.858
+      },
+      {
+        "file": "high_cigarette_smokers_v5__52ccbf288501_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.874,
+        "iou": 0.962
+      },
+      {
+        "file": "high_cigarette_smokers_v5__52ccbf288501_2.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.78,
+        "iou": 0.705
+      },
+      {
+        "file": "high_cigarette_smokers_v5__52ccbf288501_5.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.905,
+        "iou": 0.855
+      },
+      {
+        "file": "high_kaggle_turkish_license_plate_2776891__e1d56a6ce7a2_0.jpg",
+        "gt_class": "license_plate",
+        "conf": 0.905,
+        "iou": 0.958
+      },
+      {
+        "file": "high_cigarette_smokers_v5__1c499f3a8e7d_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.851,
+        "iou": 0.994
+      },
+      {
+        "file": "high_cigarette_smokers_v5__57cd4b4dbdb7_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.94,
+        "iou": 0.933
+      },
+      {
+        "file": "high_cigarette_smokers_v5__d6ff36d2ea8a_0.jpg",
+        "gt_class": "sigara_icme",
+        "conf": 0.885,
+        "iou": 0.97
+      },
+      {
+        "file": "high_kaggle_turkish_license_plate_2776891__970a868eb83f_0.jpg",
+        "gt_class": "license_plate",
+        "conf": 0.871,
+        "iou": 0.926
+      },
+      {
+        "file": "high_driver_distraction_v3__ab8951d82176_0.jpg",
+        "gt_class": "arkaya_bakma",
+        "conf": 0.828,
+        "iou": 0.818
+      },
+      {
+        "file": "high_driver_distraction_v3__e248cb97aed1_0.jpg",
+        "gt_class": "arkaya_bakma",
+        "conf": 0.848,
+        "iou": 0.914
+      },
+      {
+        "file": "high_kaggle_turkish_license_plate_2776891__dba396fa8fcc_0.jpg",
+        "gt_class": "license_plate",
+        "conf": 0.873,
+        "iou": 0.946
+      }
+    ]
+  }
+}

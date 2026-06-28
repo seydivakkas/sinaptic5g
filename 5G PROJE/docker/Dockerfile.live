@@ -1,0 +1,22 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app/final_5g_extension/mec_backend:/app/final_5g_extension/qod_engine:/app
+
+WORKDIR /app
+
+COPY requirements-live.txt /tmp/requirements-live.txt
+RUN pip install --no-cache-dir -r /tmp/requirements-live.txt
+
+# Copy restructured live extension files
+COPY final_5g_extension /app/final_5g_extension
+COPY configs /app/configs
+COPY demo /app/demo
+COPY label_contract.yaml /app/label_contract.yaml
+
+EXPOSE 8000
+CMD ["uvicorn", "final_5g_extension.mec_backend.server:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

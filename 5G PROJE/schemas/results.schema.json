@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sinaptic5g.local/schemas/results.schema.json",
+  "title": "TEKNOFEST FTR results.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["video_id", "arac_bilgisi", "tespitler"],
+  "properties": {
+    "video_id": {"type": "string", "pattern": "^[^/\\\\]+[.]mp4$"},
+    "arac_bilgisi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tip", "plaka", "renk", "confidence_score"],
+      "properties": {
+        "tip": {"enum": ["sedan", "suv", "hatchback", "pickup", "minibus", "panelvan", "kamyon"]},
+        "plaka": {"type": "string", "pattern": "^(0[1-9]|[1-7][0-9]|8[01])([A-Z][0-9]{4,5}|[A-Z]{2}[0-9]{3,4}|[A-Z]{3}[0-9]{2,3})$"},
+        "renk": {"enum": ["beyaz", "siyah", "gri", "kirmizi", "mavi", "sari", "yesil", "turuncu", "kahverengi"]},
+        "confidence_score": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+      }
+    },
+    "tespitler": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["zaman_saniye", "kategori", "etiket", "confidence_score"],
+        "properties": {
+          "zaman_saniye": {"type": "number", "minimum": 0.0},
+          "kategori": {"enum": ["sofor_eylemi", "nesneler", "yolcular"]},
+          "etiket": {"enum": ["arkaya_bakma", "esneme", "sigara_icme", "su_icme", "telefonla_konusma", "slalom", "etrafa_bakinma", "emniyet_kemeri_ihlali", "teknocan", "bilgisayar", "arka_koltuk_1", "arka_koltuk_2", "on_koltuk"]},
+          "confidence_score": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+        },
+        "allOf": [
+          {"if": {"properties": {"kategori": {"const": "sofor_eylemi"}}}, "then": {"properties": {"etiket": {"enum": ["arkaya_bakma", "esneme", "sigara_icme", "su_icme", "telefonla_konusma", "slalom", "etrafa_bakinma", "emniyet_kemeri_ihlali"]}}}},
+          {"if": {"properties": {"kategori": {"const": "nesneler"}}}, "then": {"properties": {"etiket": {"enum": ["teknocan", "bilgisayar"]}}}},
+          {"if": {"properties": {"kategori": {"const": "yolcular"}}}, "then": {"properties": {"etiket": {"enum": ["arka_koltuk_1", "arka_koltuk_2", "on_koltuk"]}}}}
+        ]
+      }
+    }
+  }
+}

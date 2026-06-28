@@ -1,0 +1,13 @@
+{
+  "status": "HEDEF",
+  "run_id": "replace-after-paired-validation",
+  "dataset_manifest_sha256": "replace-after-paired-validation",
+  "threshold": 0.5,
+  "bias": 0.0,
+  "weights": {
+    "recognizability_gap": 0.25,
+    "model_uncertainty": 0.25,
+    "media_degradation": 0.25,
+    "network_degradation": 0.25
+  }
+}

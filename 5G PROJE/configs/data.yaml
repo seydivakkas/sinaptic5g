@@ -1,0 +1,21 @@
+dataset:
+  root: dataset
+  manifest: dataset/manifest.yaml
+  license_inventory: dataset/LICENSE_INVENTORY.md
+
+classes:
+  source: dataset/data.yaml
+  count: 6
+  scope: internal_training_only
+
+split:
+  policy: group_aware
+  ratios: [0.70, 0.15, 0.15]
+  seed: 42
+  group_keys: [video_id, capture_session, vehicle_id, person_id]
+  compliance_required_for_kpi: true
+
+evidence:
+  current_status: OLCULDU
+  measured_scope: file_inventory_and_hashes_only
+  model_kpi_status: BILDIRILDI-DOGRULANMADI

@@ -1,0 +1,178 @@
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+# FTR Resmi Etiket Kontratı
+# Kaynak: "5G & Yapay Zekâ ile Akıllı Yol Güvenliği Yarışması — FTR Aşaması Teslim Dokümanı"
+# UYARI: Bu dosyayı değiştirmeyin. Hakem değerlendirme scriptiyle birebir eşleşmelidir.
+# NOT: label_contract.yaml yeni bir dosyadır; mevcut hiçbir koda dokunmaz.
+
+schema_version: "1.0"
+source_doc: "FTR_Aşaması_Teslim_D.pdf"
+last_updated: "2026-06-25"
+
+# ─────────────────────────────────────────────────────────────
+# ÇIKTI DOSYASI
+# ─────────────────────────────────────────────────────────────
+output:
+  file: "results.json"
+  path: "/app/data/output/results.json"
+  encoding: "utf-8"
+
+# ─────────────────────────────────────────────────────────────
+# ARAÇ BİLGİSİ (arac_bilgisi)
+# ─────────────────────────────────────────────────────────────
+arac_bilgisi:
+  fields:
+    - name: tip
+      type: string
+      required: true
+      valid_values:
+        - sedan
+        - suv
+        - hatchback
+        - pickup
+        - minibus
+        - panelvan
+        - kamyon
+
+    - name: plaka
+      type: string
+      required: true
+      format: "Türkiye plaka standartı"
+      regex: "^(0[1-9]|[1-7][0-9]|8[01])((\\s?[a-zA-Z]\\s?)(\\d{4,5})|(\\s?[a-zA-Z]{2}\\s?)(\\d{3,4})|(\\s?[a-zA-Z]{3}\\s?)(\\d{2,3}))$"
+      fallback: "tespit_edilemedi"
+      notes:
+        - "Boşluklar normalize edilmeli veya birleşik yazılmalıdır."
+        - "Türkçe karakter içermemeli."
+
+    - name: renk
+      type: string
+      required: true
+      valid_values:
+        - beyaz
+        - siyah
+        - gri
+        - kirmizi
+        - mavi
+        - sari
+        - yesil
+        - turuncu
+        - kahverengi
+
+    - name: confidence_score
+      type: float
+      required: true
+      range: [0.0, 1.0]
+      notes: "Tüm araç özelliklerinin (tip, plaka, renk) bütünü için tek ortak skor."
+
+# ─────────────────────────────────────────────────────────────
+# TESPİTLER (tespitler[])
+# ─────────────────────────────────────────────────────────────
+tespitler:
+  item_fields:
+    - name: zaman_saniye
+      type: float
+      required: true
+
+    - name: kategori
+      type: string
+      required: true
+
+    - name: etiket
+      type: string
+      required: true
+
+    - name: confidence_score
+      type: float
+      required: true
+      range: [0.0, 1.0]
+
+  # ─── KATEGORİLER VE ETİKETLER ────────────────────────────
+  categories:
+    sofor_eylemi:
+      description: "Sürücünün anlık dikkat dağınıklığı, yorgunluk veya kural ihlali durumları."
+      labels:
+        - arkaya_bakma
+        - esneme
+        - sigara_icme
+        - su_icme
+        - telefonla_konusma
+        - slalom
+        - etrafa_bakinma
+        - emniyet_kemeri_ihlali
+
+    nesneler:
+      description: "Araç içi kabinde veya yol üzerinde tespit edilen hedef nesneler."
+      labels:
+        - teknocan
+        - bilgisayar
+
+    yolcular:
+      description: "Araç içinde bulunan yolcuların konum bazlı tespiti."
+      labels:
+        - arka_koltuk_1
+        - arka_koltuk_2
+        - on_koltuk
+
+# ─────────────────────────────────────────────────────────────
+# ALAN ADI HATA TABLOSU (yaygın yanlış kullanımlar)
+# ─────────────────────────────────────────────────────────────
+field_name_errors:
+  - wrong: "score"
+    correct: "confidence_score"
+  - wrong: "conf"
+    correct: "confidence_score"
+  - wrong: "guven_skoru"
+    correct: "confidence_score"
+  - wrong: "time"
+    correct: "zaman_saniye"
+  - wrong: "timestamp"
+    correct: "zaman_saniye"
+  - wrong: "second"
+    correct: "zaman_saniye"
+  - wrong: "cat"
+    correct: "kategori"
+  - wrong: "category"
+    correct: "kategori"
+  - wrong: "label"
+    correct: "etiket"
+  - wrong: "plate"
+    correct: "plaka"
+  - wrong: "color"
+    correct: "renk"
+  - wrong: "vehicle_type"
+    correct: "tip"
+  - wrong: "sofor_eylemleri"
+    correct: "sofor_eylemi"
+
+# ─────────────────────────────────────────────────────────────
+# GENEL KURALLAR
+# ─────────────────────────────────────────────────────────────
+rules:
+  encoding:
+    - "Tüm etiketler ASCII-safe ve küçük harf olmalıdır."
+    - "Türkçe karakter kullanılamaz: ç, ğ, ı, ö, ş, ü"
+    - "Boşluk yerine alt çizgi (_) kullanılmalıdır."
+
+  json_keys:
+    - "JSON anahtarları birebir eşleşmelidir."
+    - "Şema dışı alan eklenemez: hiz, speed, qod_status, frame_id, bbox, track_id, debug"
+
+  docker:
+    base_image: "nvidia/cuda:12.1.0-base-ubuntu22.04"
+    input_path: "/app/data/input/video.mp4"
+    output_path: "/app/data/output/results.json"
+    model_path: "/app/models/"
+    max_runtime_seconds: 600
+    max_image_size_gb: 8
+    gpu: "NVIDIA Tesla T4"
+    ram_gb: 16
+    vcpu: 4
+    internet_required: false
+
+  forbidden:
+    - "Runtime sırasında internet erişimi."
+    - "hostname, IP, env var veya dosya varlığı ile ortam tespiti."
+    - "Ortama göre farklı çıktı üretmek."
+    - "results.json yazmadan çıkmak."
+    - "Hatalı video durumunda crash olmak."

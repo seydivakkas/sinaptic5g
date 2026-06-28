@@ -1,0 +1,117 @@
+# ============================================================
+# Sinaptic5G — Eğitim Konfigürasyonu
+# ============================================================
+
+# Genel eğitim parametreleri
+training:
+  epochs: 50
+  batch_size: 16
+  device: "cuda"                  # "cpu", "cuda", "cuda:0"
+  seed: 42
+  deterministic: true
+
+# Optimizer
+optimizer:
+  name: "AdamW"
+  learning_rate: 0.001
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+# Learning rate scheduler
+scheduler:
+  name: "cosine"                  # "cosine", "step", "plateau"
+  warmup_epochs: 3
+  min_lr: 0.00001
+  # CosineAnnealingLR
+  T_max: 50
+  eta_min: 0.00001
+
+# Loss fonksiyonları
+loss:
+  # Focal Loss (sınıf dengesizliği)
+  focal:
+    alpha: 0.25                   # Pozitif sınıf ağırlığı
+    gamma: 2.0                    # Zor örneklere odaklanma
+    reduction: "mean"
+
+  # Weighted Cross Entropy
+  weighted_ce:
+    # Nadir sınıflara daha yüksek ağırlık
+    class_weights:
+      otomobil: 1.0
+      kamyon: 1.5
+      motosiklet: 2.0
+      otobus: 1.5
+      yaya: 1.0
+      trafik_isareti: 2.5
+      trafik_isigi: 2.0
+      TOGG: 5.0                   # Çok nadir sınıf
+      license_plate: 1.0
+      phone: 3.0
+      cigarette: 3.5
+      driver_face: 1.0
+
+  # Zero-DCE loss ağırlıkları
+  zero_dce:
+    w_spa: 1.0
+    w_exp: 10.0
+    w_col: 5.0
+    w_tv: 200.0
+
+# Gradient clipping
+gradient_clipping:
+  enabled: true
+  max_norm: 1.0
+  norm_type: 2                    # L2 norm
+
+# Early stopping
+early_stopping:
+  enabled: true
+  patience: 10                    # N epoch iyileşme yoksa dur
+  min_delta: 0.001                # Minimum iyileşme eşiği
+  monitor: "val_loss"             # İzlenecek metrik
+  mode: "min"                     # "min" veya "max"
+
+# Model kaydetme
+checkpointing:
+  save_best: true
+  save_last: true
+  save_period: 5                  # Her 5 epoch'ta kaydet
+  save_dir: "runs/checkpoints"
+
+# Weights & Biases (WandB) loglama
+wandb:
+  enabled: true
+  project: "sinaptic5g"
+  entity: null                    # WandB kullanıcı/takım adı
+  run_name: null                  # null → otomatik ad
+  tags:
+    - "teknofest2026"
+    - "traffic-safety"
+  # Loglanan metrikler
+  log_metrics:
+    - "train_loss"
+    - "val_loss"
+    - "mAP"
+    - "mAP_50"
+    - "speed_error_rmse"
+    - "behavior_accuracy"
+    - "learning_rate"
+  log_gradients: true
+  log_freq: 10                    # Her 10 batch'te logla
+
+# Transfer learning
+transfer_learning:
+  # Aşama 1: İlk N katman dondurulur
+  freeze_layers_nano: 5
+  freeze_layers_large: 10
+  # Aşama 2: Tüm katmanlar serbest (unfreeze_epoch sonrası)
+  unfreeze_epoch: 10
+
+# Knowledge Distillation
+distillation:
+  enabled: false
+  teacher_model: "models/yolov8l_tripwire.pt"
+  temperature: 3.0
+  alpha: 0.5                      # KD loss ağırlığı

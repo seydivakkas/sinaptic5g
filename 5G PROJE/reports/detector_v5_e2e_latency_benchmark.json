@@ -1,0 +1,37 @@
+{
+  "date": "2026-06-25 08:31",
+  "model": "detector_v5",
+  "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "cuda_available": true,
+  "benchmark_file": "tests\\smoke_input\\smoke_test.mp4",
+  "iterations": 5,
+  "target_seconds": 8.0,
+  "results": {
+    "gpu": {
+      "runs": [
+        1.5082,
+        1.5359,
+        1.5155,
+        1.5074,
+        1.5498
+      ],
+      "average": 1.5233,
+      "min": 1.5074,
+      "max": 1.5498,
+      "compliant": true
+    },
+    "cpu": {
+      "runs": [
+        2.2484,
+        2.2421,
+        2.2445,
+        2.2416,
+        2.2401
+      ],
+      "average": 2.2433,
+      "min": 2.2401,
+      "max": 2.2484,
+      "compliant": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "execution_providers": {
+    "lprnet": [
+      "CPUExecutionProvider"
+    ],
+    "crnn": [
+      "CPUExecutionProvider"
+    ],
+    "crnn_int8": [
+      "CPUExecutionProvider"
+    ]
+  },
+  "fp32": {
+    "p50_ms": 59.65165000088746,
+    "p95_ms": 396.51444999180967,
+    "p99_ms": 425.1514679986576
+  },
+  "int8": {
+    "p50_ms": 250.8136500036926,
+    "p95_ms": 346.62471499541425,
+    "p99_ms": 384.66941300561297
+  },
+  "target_compliance": {
+    "gpu_limit_ms": 50.0,
+    "cpu_limit_ms": 60.0,
+    "is_gpu_compliant": null,
+    "is_cpu_compliant": false
+  }
+}

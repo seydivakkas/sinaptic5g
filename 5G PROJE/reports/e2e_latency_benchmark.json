@@ -1,0 +1,14 @@
+{
+  "benchmark_file": "tests\\smoke_input\\smoke_test.mp4",
+  "iterations": 5,
+  "runs_seconds": [
+    2.2484,
+    2.2421,
+    2.2445,
+    2.2416,
+    2.2401
+  ],
+  "average_seconds": 2.2433,
+  "target_seconds": 8.0,
+  "is_compliant": true
+}

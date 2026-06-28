@@ -1,0 +1,14 @@
+# SİNAPTİC5G FTR Offline Core Runtime Configuration
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+runtime:
+  target_runtime_seconds: 540 # 9 minutes
+  camera_mode: "front"
+  enable_lstm: false
+  enable_batch: false
+  profile: false
+  video_id_pattern: "^[^/\\\\]+[.]mp4$"
+  event_gap_seconds: 1.0
+  track_buffer: 45
+  conf_thresh: 0.45

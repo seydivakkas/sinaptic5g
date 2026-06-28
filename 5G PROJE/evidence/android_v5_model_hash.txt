@@ -1,0 +1,2 @@
+yolov8n.tflite size: 51880402 bytes
+yolov8n.tflite SHA-256: c10733c504e0ee75465d119fd139310508d4d1bbb279b915e5836965357ef5b7

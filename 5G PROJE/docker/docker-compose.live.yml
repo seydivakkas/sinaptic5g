@@ -1,0 +1,83 @@
+# SİNAPTİC5G Live 5G Extension Orchestration
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru", "--save", ""]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  live_bff:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.live
+    restart: unless-stopped
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      SERVER_HOST: 0.0.0.0
+      SERVER_PORT: 8000
+      SECRET_KEY: ${SECRET_KEY:-}
+      ALLOWED_ORIGIN: ${ALLOWED_ORIGIN:-}
+      TURKCELL_TOKEN_URL: ${TURKCELL_TOKEN_URL:-}
+      TURKCELL_NUMBER_VERIFY_URL: ${TURKCELL_NUMBER_VERIFY_URL:-}
+      TURKCELL_QOD_BASE_URL: ${TURKCELL_QOD_BASE_URL:-}
+      TURKCELL_QOD_CLIENT_ID: ${TURKCELL_QOD_CLIENT_ID:-}
+      TURKCELL_QOD_CLIENT_SECRET: ${TURKCELL_QOD_CLIENT_SECRET:-}
+      TURKCELL_QOD_PROFILE: ${TURKCELL_QOD_PROFILE:-}
+      QOD_APPLICATION_SERVER_IPV4: ${QOD_APPLICATION_SERVER_IPV4:-}
+      QOD_APPLICATION_SERVER_PORT: ${QOD_APPLICATION_SERVER_PORT:-443}
+      QOD_DEVICE_PORT: ${QOD_DEVICE_PORT:-0}
+      QOD_TRANSPORT_PROTOCOL: ${QOD_TRANSPORT_PROTOCOL:-TCP}
+      QOD_NOTIFICATION_URL: ${QOD_NOTIFICATION_URL:-}
+      QOD_DURATION_SECONDS: ${QOD_DURATION_SECONDS:-300}
+      QOD_BENEFIT_MODEL_PATH: ${QOD_BENEFIT_MODEL_PATH:-configs/qod_benefit_model.json}
+      MEDIA_SERVICE_TOKEN: ${MEDIA_SERVICE_TOKEN:-}
+      MEDIA_BASE_URL: ${MEDIA_BASE_URL:-}
+      WEBRTC_SIGNALING_TTL_SECONDS: ${WEBRTC_SIGNALING_TTL_SECONDS:-60}
+      WEBRTC_ICE_SERVERS_JSON: ${WEBRTC_ICE_SERVERS_JSON:-[]}
+      PYTHONPATH: /app/final_5g_extension/mec_backend:/app/final_5g_extension/qod_engine:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  media_service:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.media
+    restart: unless-stopped
+    environment:
+      BFF_BASE_URL: http://live_bff:8000
+      MEDIA_SERVICE_TOKEN: ${MEDIA_SERVICE_TOKEN:-}
+      SECRET_KEY: ${SECRET_KEY:-}
+      WEBRTC_ICE_SERVERS_JSON: ${WEBRTC_ICE_SERVERS_JSON:-[]}
+      MEDIA_MODEL_PATH: /models/yolov8n.onnx
+      MEDIA_MODEL_MANIFEST_PATH: /models/android_vehicle_sentinel.manifest.json
+      PYTHONPATH: /app/final_5g_extension/mec_backend:/app/final_5g_extension/qod_engine:/app
+    volumes:
+      - ../yolov8n.onnx:/models/yolov8n.onnx:ro
+      - ../models/android_vehicle_sentinel.manifest.json:/models/android_vehicle_sentinel.manifest.json:ro
+    ports:
+      - "8001:8001"
+    depends_on:
+      live_bff:
+        condition: service_healthy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

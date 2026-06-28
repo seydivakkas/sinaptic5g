@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETED",
+  "best_acc": 0.9985,
+  "output_dir": "models\\runs\\cnn_lstm_improved",
+  "best_model": "models\\runs\\cnn_lstm_improved\\cnn_lstm_improved_best.pth",
+  "num_features": 7,
+  "seq_len": 16,
+  "num_classes": 5
+}

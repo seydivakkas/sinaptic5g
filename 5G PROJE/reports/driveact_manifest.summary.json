@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "test": {
+      "bilgisayar": 75,
+      "normal_surus": 707,
+      "su_icme": 24,
+      "telefonla_konusma": 168
+    },
+    "train": {
+      "bilgisayar": 358,
+      "normal_surus": 1810,
+      "su_icme": 113,
+      "telefonla_konusma": 535
+    },
+    "val": {
+      "bilgisayar": 55,
+      "normal_surus": 280,
+      "su_icme": 22,
+      "telefonla_konusma": 127
+    }
+  },
+  "rows": 4274,
+  "split_index": 0
+}

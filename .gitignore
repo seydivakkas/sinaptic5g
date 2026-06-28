@@ -1,0 +1,66 @@
+# ── Python ───────────────────────────────────────────────────
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Ortam ve Paketler ──────────────────────────────────────────
+.env
+venv/
+.venv/
+env/
+ENV/
+.venv-ftr/
+.venv-ftr/**
+
+# ── Büyük Dosyalar ve Arşivler ─────────────────────────────────
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+!mQFC3u6kp6XQE4P2WnUdSz1mqF17IXHN.zip
+!deliverables/SINAPTIC5G_CODE_SUBMISSION.zip
+
+# ── Geçici ve Çıktı Dizinleri ───────────────────────────────────
+tmp/
+output/
+.agents/
+.pytest_cache/
+htmlcov/
+.coverage
+
+# ── Model Ağırlıkları (Büyük Dosyalar) ─────────────────────────
+# Modelleştirilmiş ağırlıkları izle (ONNX, TFLite vb. 100MB sınırının altındadır)
+!**/models/*.pt
+!**/models/*.pth
+!**/models/*.tflite
+!**/models/*.onnx
+!**/models/*.engine
+!yolov8n.onnx
+!yolov8n.pt
+
+# ── Dataset ve Videolar ─────────────────────────────────────────
+**/dataset/
+**/veriseti/
+**/data/
+!**/data/splits/
+**/runs/
+**/*.mp4
+**/*.avi
+**/*.mov
+**/*.mkv
+
+# ── IDEs ───────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+sinapticlink5g/

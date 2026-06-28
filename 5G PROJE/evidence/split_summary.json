@@ -1,0 +1,362 @@
+{
+  "train": {
+    "images": 10998,
+    "labels": 10998,
+    "instances": {
+      "4": 5968,
+      "6": 723,
+      "8": 1596,
+      "0": 1907,
+      "5": 1260,
+      "1": 773,
+      "2": 785,
+      "7": 662,
+      "3": 762
+    }
+  },
+  "val": {
+    "images": 2816,
+    "labels": 2816,
+    "instances": {
+      "4": 1536,
+      "7": 30,
+      "5": 186,
+      "2": 202,
+      "0": 500,
+      "3": 197,
+      "1": 201,
+      "8": 402,
+      "6": 32
+    }
+  },
+  "test": {
+    "images": 1434,
+    "labels": 1434,
+    "instances": {
+      "4": 758,
+      "7": 26,
+      "5": 93,
+      "3": 102,
+      "1": 100,
+      "0": 250,
+      "2": 101,
+      "8": 219,
+      "6": 36
+    }
+  },
+  "moved_images": 39,
+  "move_log": [
+    {
+      "stem": "val_aug_00044",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00042",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00038",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__df804f458fbd",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__5c3e397e6d9d",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00063",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00045",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__b538b7df5c69",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00048",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__fef81646c9f6",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00050",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00040",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__ebb1993990c6",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__44437ef9c9c1",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00055",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00057",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__decdfcf4cca8",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00043",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00067",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "soft_toy__07c631369eed",
+      "class_id": 6,
+      "class_name": "teknocan",
+      "classes_in_image": [
+        6
+      ]
+    },
+    {
+      "stem": "val_aug_00000",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00001",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00033",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "detect_laptop__74793cef182b",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "detect_laptop__44e38ad5b915",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00004",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00006",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00017",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00031",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00023",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00020",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00007",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00019",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00010",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00008",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00012",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00035",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "val_aug_00016",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    },
+    {
+      "stem": "detect_laptop__d4559835c8e9",
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "classes_in_image": [
+        7
+      ]
+    }
+  ]
+}

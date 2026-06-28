@@ -1,0 +1,22 @@
+# SİNAPTİC5G Model Registry Configuration
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+models:
+  detector:
+    name: "YOLOv8m Custom Driver Sentinel"
+    path: "models/detector_optimized.onnx"
+    input_size: 640
+  coco:
+    name: "YOLOv8n COCO Pretrained"
+    path: "yolov8n.onnx"
+    input_size: 640
+  lprnet:
+    name: "LPRNet Plate OCR"
+    path: "models/lprnet.onnx"
+  crnn:
+    name: "CRNN Text OCR"
+    path: "models/crnn.onnx"
+  cnn_lstm:
+    name: "CNN-LSTM Driver Temporal Behavior Classifier"
+    path: "models/cnn_lstm.onnx"

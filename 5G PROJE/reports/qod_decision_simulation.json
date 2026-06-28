@@ -1,0 +1,114 @@
+[
+  {
+    "scenario": "S1: Target Absent",
+    "signals": {
+      "target_present": 0.0,
+      "vehicle_is_approaching": 1.0,
+      "recognizability_gap": 0.9,
+      "model_uncertainty": 0.8,
+      "media_degradation": 0.8,
+      "network_degradation": 0.9
+    },
+    "initial_state": "IDLE",
+    "decision_allowed": false,
+    "reason": "target_absent",
+    "expected_benefit": 0.0,
+    "final_state": "OBSERVE",
+    "session_id": null
+  },
+  {
+    "scenario": "S2: Target Present but static",
+    "signals": {
+      "target_present": 1.0,
+      "vehicle_is_approaching": 0.0,
+      "recognizability_gap": 0.9,
+      "model_uncertainty": 0.8,
+      "media_degradation": 0.8,
+      "network_degradation": 0.9
+    },
+    "initial_state": "OBSERVE",
+    "decision_allowed": false,
+    "reason": "target_not_approaching",
+    "expected_benefit": 0.0,
+    "final_state": "OBSERVE",
+    "session_id": null
+  },
+  {
+    "scenario": "S3: Approaching but clean view (Low Benefit)",
+    "signals": {
+      "target_present": 1.0,
+      "vehicle_is_approaching": 1.0,
+      "recognizability_gap": 0.1,
+      "model_uncertainty": 0.1,
+      "media_degradation": 0.1,
+      "network_degradation": 0.1
+    },
+    "initial_state": "OBSERVE",
+    "decision_allowed": false,
+    "reason": "calibrated_gate",
+    "expected_benefit": 0.15,
+    "final_state": "OBSERVE",
+    "session_id": null
+  },
+  {
+    "scenario": "S4: Approaching + degraded view (High Benefit, Allowed)",
+    "signals": {
+      "target_present": 1.0,
+      "vehicle_is_approaching": 1.0,
+      "recognizability_gap": 0.8,
+      "model_uncertainty": 0.9,
+      "media_degradation": 0.7,
+      "network_degradation": 0.8
+    },
+    "initial_state": "OBSERVE",
+    "decision_allowed": true,
+    "reason": "session_created",
+    "expected_benefit": 0.86,
+    "final_state": "ACTIVE",
+    "session_id": "mock-session-1"
+  },
+  {
+    "scenario": "S5: Duplicate request when active",
+    "signals": {
+      "target_present": 1.0,
+      "vehicle_is_approaching": 1.0,
+      "recognizability_gap": 0.8,
+      "model_uncertainty": 0.9,
+      "media_degradation": 0.7,
+      "network_degradation": 0.8
+    },
+    "initial_state": "ACTIVE",
+    "decision_allowed": false,
+    "reason": "equivalent_session_active",
+    "expected_benefit": 0.0,
+    "final_state": "ACTIVE",
+    "session_id": null
+  },
+  {
+    "scenario": "S6: Terminate Active Session",
+    "signals": {},
+    "initial_state": "ACTIVE",
+    "decision_allowed": true,
+    "reason": "stopped",
+    "expected_benefit": 0.0,
+    "final_state": "COOLDOWN",
+    "session_id": "mock-session-1"
+  },
+  {
+    "scenario": "S7: Immediate Request in Cooldown",
+    "signals": {
+      "target_present": 1.0,
+      "vehicle_is_approaching": 1.0,
+      "recognizability_gap": 0.8,
+      "model_uncertainty": 0.9,
+      "media_degradation": 0.7,
+      "network_degradation": 0.8
+    },
+    "initial_state": "COOLDOWN",
+    "decision_allowed": false,
+    "reason": "cooldown_active",
+    "expected_benefit": 0.0,
+    "final_state": "COOLDOWN",
+    "session_id": null
+  }
+]

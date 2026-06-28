@@ -1,0 +1,95 @@
+{
+  "split": "test",
+  "precision": 0.9378760884471051,
+  "recall": 0.9333180949620912,
+  "f1": 0.9355915403554134,
+  "map50": 0.9472569772274283,
+  "map50_95": 0.6903792687118528,
+  "instances": 1685,
+  "per_class": [
+    {
+      "class_id": 0,
+      "class_name": "telefonla_konusma",
+      "support": 250,
+      "precision": 0.988614510061481,
+      "recall": 0.976,
+      "ap50": 0.9913667646414791,
+      "ap50_95": 0.6938942631270787
+    },
+    {
+      "class_id": 1,
+      "class_name": "su_icme",
+      "support": 100,
+      "precision": 0.9883497349407567,
+      "recall": 1.0,
+      "ap50": 0.995,
+      "ap50_95": 0.8306871836490407
+    },
+    {
+      "class_id": 2,
+      "class_name": "arkaya_bakma",
+      "support": 101,
+      "precision": 0.9868362114215004,
+      "recall": 1.0,
+      "ap50": 0.995,
+      "ap50_95": 0.8366824719657089
+    },
+    {
+      "class_id": 3,
+      "class_name": "esneme",
+      "support": 102,
+      "precision": 0.943984640053049,
+      "recall": 0.9901960784313726,
+      "ap50": 0.9923492798870948,
+      "ap50_95": 0.6264270391418879
+    },
+    {
+      "class_id": 4,
+      "class_name": "sigara_icme",
+      "support": 758,
+      "precision": 0.913173549632351,
+      "recall": 0.7631238974707216,
+      "ap50": 0.8575276289476126,
+      "ap50_95": 0.5075029503152926
+    },
+    {
+      "class_id": 5,
+      "class_name": "emniyet_kemeri_ihlali",
+      "support": 93,
+      "precision": 0.9192645862870314,
+      "recall": 0.8279569892473119,
+      "ap50": 0.8595685645749341,
+      "ap50_95": 0.5838902900239754
+    },
+    {
+      "class_id": 6,
+      "class_name": "teknocan",
+      "support": 36,
+      "precision": 0.8264765982778306,
+      "recall": 0.9166666666666666,
+      "ap50": 0.8973120300751879,
+      "ap50_95": 0.6226525768770705
+    },
+    {
+      "class_id": 7,
+      "class_name": "bilgisayar",
+      "support": 26,
+      "precision": 0.9236902121082768,
+      "recall": 0.9615384615384616,
+      "ap50": 0.9530769230769229,
+      "ap50_95": 0.720832899743053
+    },
+    {
+      "class_id": 8,
+      "class_name": "license_plate",
+      "support": 219,
+      "precision": 0.9504947532416682,
+      "recall": 0.9643807613042872,
+      "ap50": 0.9841116038436218,
+      "ap50_95": 0.790843743563568
+    }
+  ],
+  "weights": "D:\\SİNAPTİC\\5G PROJE\\models\\candidates\\detector_v5\\best.pt",
+  "weights_sha256": "69f579ad3e429542b64ecdeafbe7bd027d9ed8309d84be8f2775d00b7f484778",
+  "training_epochs": 60
+}

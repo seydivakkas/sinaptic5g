@@ -1,0 +1,18 @@
+{
+  "model_asset": "yolov8n.tflite",
+  "artifact_sha256": "c10733c504e0ee75465d119fd139310508d4d1bbb279b915e5836965357ef5b7",
+  "artifact_size_bytes": 51880402,
+  "input_shape": [
+    1,
+    640,
+    640,
+    3
+  ],
+  "input_dtype": "float32",
+  "output_shape": [
+    1,
+    84,
+    8400
+  ],
+  "output_dtype": "float32"
+}

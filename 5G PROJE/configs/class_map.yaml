@@ -1,0 +1,14 @@
+# SİNAPTİC5G Canonical FTR Class Map Configuration
+# ÖZEL LİSANS — TÜM HAKLAR SAKLIDIR
+# Telif Hakkı (c) 2026 Seydi Eryılmaz (@seydivakkas)
+
+class_map:
+  0: "telefonla_konusma"
+  1: "su_icme"
+  2: "arkaya_bakma"
+  3: "esneme"
+  4: "sigara_icme"
+  5: "emniyet_kemeri_ihlali"
+  6: "teknocan"
+  7: "bilgisayar"
+  8: "license_plate"
