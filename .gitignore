@@ -18,6 +18,9 @@ ENV/
 .venv-ftr/
 .venv-ftr/**
 
+# ── Machine-local configuration ────────────────────────────────
+**/local.properties
+
 # ── Büyük Dosyalar ve Arşivler ─────────────────────────────────
 *.zip
 *.tar.gz
