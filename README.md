@@ -31,6 +31,21 @@ The system focuses on two complementary views:
 
 ---
 
+## Minimum reproducible FTR check
+
+The repository's deterministic evaluation surface is the offline FTR container and its pre-submission acceptance suite.
+
+```bash
+git clone https://github.com/seydivakkas/sinaptic5g.git
+cd sinaptic5g
+python "5G PROJE/scripts/ftr_pre_submission_check.py"
+docker build -t sinaptic5g:ftr .
+```
+
+The Docker build expects the locked ONNX artifacts referenced by `5G PROJE/model_lock.json`. A full inference run additionally requires an input video and NVIDIA-compatible Docker runtime, following the mount contract documented in the root `Dockerfile`.
+
+---
+
 ## Engineering evidence
 
 | Signal | Repository evidence |
@@ -42,6 +57,9 @@ The system focuses on two complementary views:
 | Robustness | Motion blur, Gaussian noise, JPEG compression and illumination variation |
 | Motion reasoning | BEV geometry + timestamp-based speed estimation |
 | Temporal filtering | Confidence-adaptive Kalman measurement noise |
+| Release integrity | Model-lock SHA-256 and FTR pre-submission acceptance checks |
+
+[Evidence index](docs/evidence/README.md) · [Known limitations](KNOWN_LIMITATIONS.md)
 
 ---
 
@@ -96,6 +114,8 @@ The project explicitly addresses conditions that break naive perception systems:
 
 For motion estimation, time is handled through real timestamps rather than assuming a perfectly fixed frame rate.
 
+A documented Teknocan synthetic-data blocker remains intentionally active when approved foreground assets are unavailable; the pipeline does not silently manufacture semantically unsafe training data.
+
 ---
 
 ## Technology stack
@@ -107,17 +127,18 @@ For motion estimation, time is handled through real timestamps rather than assum
 `BEV / Homography` · `Kalman Filtering` · `Timestamp-Based Motion Estimation`
 
 **System engineering**  
-`Edge AI` · `5G Integration` · `Data Governance` · `Real-Time Inference`
+`Edge AI` · `5G Integration` · `Docker` · `Model Hash Lock` · `Data Governance` · `Real-Time Inference`
 
 ---
 
 ## Documentation
 
-The root README is intentionally portfolio-oriented. The original system documentation is preserved in full:
+- [Architecture index](docs/architecture/README.md)
+- [Evidence index](docs/evidence/README.md)
+- [Known limitations](KNOWN_LIMITATIONS.md)
+- [Full technical documentation](docs/README_FULL.md)
 
-### **[Full Technical Documentation →](docs/README_FULL.md)**
-
-It contains the detailed dataset construction, canonical mapping, augmentation strategy, perception pipeline, physical reasoning and evaluation documentation.
+The full documentation contains dataset construction, canonical mapping, augmentation strategy, perception pipeline, physical reasoning and evaluation details.
 
 ---
 
@@ -127,7 +148,8 @@ It contains the detailed dataset construction, canonical mapping, augmentation s
 2. **Real timestamps before frame-count assumptions**
 3. **Confidence-aware filtering before fixed-noise tracking**
 4. **Physical geometry before purely visual heuristics**
-5. **End-to-end system evidence before isolated model metrics**
+5. **Model-lock evidence before release claims**
+6. **Explicit blockers before unsafe synthetic data**
 
 ---
 
@@ -135,6 +157,6 @@ It contains the detailed dataset construction, canonical mapping, augmentation s
 
 **Edge perception · temporal reasoning · connected road safety**
 
-[GitHub Profile](https://github.com/seydivakkas) · [Full Documentation](docs/README_FULL.md)
+[GitHub Profile](https://github.com/seydivakkas) · [Evidence](docs/evidence/README.md) · [Full Documentation](docs/README_FULL.md)
 
 </div>
